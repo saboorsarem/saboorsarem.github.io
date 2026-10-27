@@ -135,11 +135,17 @@
   .privacy { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .05);
              padding: 16px 18px; }
   .privacy-title { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-                   color: var(--neon); margin: 0 0 12px; }
-  .privacy ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+                   color: var(--neon); margin: 24px 0 10px; }
+  .privacy > .privacy-title:first-child { margin-top: 0; }
+  .privacy p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); }
+  .privacy p.privacy-lead { font-family: var(--mono); color: var(--fg); }
+  .privacy ul { list-style: none; padding: 0; margin: 0 0 4px; display: grid; gap: 10px;
                 font-size: .9rem; color: var(--muted); }
+  .privacy li { line-height: 1.55; }
   .privacy strong { color: var(--fg); font-weight: 600; }
-  .privacy-note { margin: 12px 0 0; font-size: .88rem; color: var(--muted); }
+  .privacy code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
+  .privacy a { color: var(--fg); border-bottom: 1px solid var(--line); }
+  .privacy a:hover { color: var(--neon); border-color: var(--neon); }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .chips li { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
@@ -236,16 +242,29 @@
       </ul>
 
       <div class="privacy">
+        <p class="privacy-title">About AVA</p>
+        <p class="privacy-lead">AVA &mdash; Your Voice. Your Words.</p>
+        <p>Developed by <strong>DANISHYARSI</strong>. AVA is a desktop application designed to transform spoken words into written
+          text. Built with a focus on Persian speech recognition, AVA aims to make writing faster, more natural and more
+          accessible. Whether you are taking university notes, writing documents, preparing messages or capturing ideas,
+          AVA helps turn your voice into text.</p>
+
+        <p class="privacy-title">Third-party licenses</p>
+        <p>AVA runs fully offline and incorporates the following open-weights models and libraries:</p>
+        <ul>
+          <li><strong>Shenava-Koochik-v1.0-tract-offline</strong> &mdash;
+            <a href="https://huggingface.co">repository</a> &middot; Apache License 2.0 (<a href="https://apache.org">apache.org</a>)</li>
+          <li><strong>Nemotron ASR Streaming Farsi</strong> &mdash;
+            <a href="https://huggingface.co">repository</a> &middot; base model
+            <code>nvidia/nemotron-3.5-asr-streaming-0.6b</code> &middot; OpenMDW License Agreement, v1.1</li>
+        </ul>
+
         <p class="privacy-title">Privacy &amp; local processing</p>
         <ul>
-          <li><strong>100% offline.</strong> All speech-to-text processing, audio chunking and transcription run entirely on your
-            local machine using the embedded local AI models.</li>
-          <li><strong>No data transmission.</strong> Your audio recordings, voice data and transcribed text are never transmitted
-            to cloud servers, external APIs or third-party tracking systems.</li>
-          <li><strong>No persistent logs.</strong> Audio captured by the floating button is processed in volatile memory (RAM)
-            in real time and discarded immediately after the text is typed into your active application.</li>
+          <li><strong>100% Offline.</strong> All audio processing and transcription are executed entirely on your local machine.</li>
+          <li><strong>Total Privacy.</strong> Your voice data and text are never transmitted to any cloud servers or third-party APIs.</li>
+          <li><strong>Volatile Memory.</strong> Audio chunks are processed in RAM and discarded immediately after typing.</li>
         </ul>
-        <p class="privacy-note">Your voice stays entirely yours, confidential and contained within your local environment.</p>
       </div>
     </article>
   </section>

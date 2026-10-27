@@ -127,6 +127,9 @@
                       text-transform: uppercase; color: var(--muted); white-space: nowrap; }
   .platforms li.ready .name, .platforms li.ready .state { color: var(--neon); }
 
+  .ver { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--neon);
+         border: 1px solid var(--line); padding: 2px 8px; }
+
   .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .chips li { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
               color: var(--cyan); border: 1px solid rgba(0, 229, 255, .3); padding: 3px 9px; }
@@ -167,6 +170,7 @@
     <article class="feature">
       <div class="feature-head">
         <h3>AVA</h3>
+        <span class="ver" id="ver" hidden></span>
       </div>
       <p>Persian speech-to-text for Windows. One floating button; the recognised text is typed straight
         into the focused application. Runs fully offline on a local Nemotron ASR model — no cloud, no API keys.
@@ -255,5 +259,15 @@
 
   <footer>&copy; 2026 Saboor Sarem</footer>
 </main>
+<script>
+fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/latest")
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (rel) {
+    var el = document.getElementById("ver");
+    el.textContent = rel.tag_name.replace(/^ava-/, "");
+    el.hidden = false;
+  })
+  .catch(function () {});
+</script>
 </body>
 </html>

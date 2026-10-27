@@ -132,6 +132,15 @@
 
   .demo { display: block; width: 100%; height: auto; margin: 18px 0; border: 1px solid var(--line); background: #000; }
 
+  .privacy { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .05);
+             padding: 16px 18px; }
+  .privacy-title { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+                   color: var(--neon); margin: 0 0 12px; }
+  .privacy ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+                font-size: .9rem; color: var(--muted); }
+  .privacy strong { color: var(--fg); font-weight: 600; }
+  .privacy-note { margin: 12px 0 0; font-size: .88rem; color: var(--muted); }
+
   .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .chips li { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
               color: var(--cyan); border: 1px solid rgba(0, 229, 255, .3); padding: 3px 9px; }
@@ -225,6 +234,19 @@
             <span class="state">Coming soon</span>
           </li>
       </ul>
+
+      <div class="privacy">
+        <p class="privacy-title">Privacy &amp; local processing</p>
+        <ul>
+          <li><strong>100% offline.</strong> All speech-to-text processing, audio chunking and transcription run entirely on your
+            local machine using the embedded local AI models.</li>
+          <li><strong>No data transmission.</strong> Your audio recordings, voice data and transcribed text are never transmitted
+            to cloud servers, external APIs or third-party tracking systems.</li>
+          <li><strong>No persistent logs.</strong> Audio captured by the floating button is processed in volatile memory (RAM)
+            in real time and discarded immediately after the text is typed into your active application.</li>
+        </ul>
+        <p class="privacy-note">Your voice stays entirely yours, confidential and contained within your local environment.</p>
+      </div>
     </article>
   </section>
 

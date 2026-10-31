@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saboor Sarem</title>
+<title>Saboor Sarem — Software Engineer</title>
 <meta name="description" content="Software engineer. Native Windows apps in C# / .NET, Python tools for local LLMs, and AVA — offline Persian speech-to-text.">
 <meta name="theme-color" content="#05070a">
-<meta property="og:title" content="Saboor Sarem">
+<meta property="og:title" content="Saboor Sarem — Software Engineer">
 <meta property="og:description" content="Software engineer. Native Windows apps, Python tools for local LLMs, and AVA.">
 <meta property="og:image" content="https://saboorsarem.github.io/avatar.png">
 <link rel="icon" type="image/png" sizes="180x180" href="logo.png">
@@ -155,6 +155,8 @@
   .grid a { font-family: var(--mono); font-size: 1.02rem; font-weight: 600; }
   .grid a::after { content: " ↗"; color: var(--neon); font-size: .85em; }
   .grid p { color: var(--muted); font-size: .92rem; margin: 6px 0 0; }
+  .grid p.tech { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+                 color: var(--cyan); margin-top: 12px; }
 
   .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; font-family: var(--mono); font-size: .9rem; }
   .links a { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
@@ -279,15 +281,18 @@
     <ul class="grid">
       <li>
         <a href="https://github.com/saboorsarem/Rat-Windows">Rat-Windows</a>
-        <p>Little Snitch-style outbound connection monitor and application firewall for Windows (WPF).</p>
+        <p>Little Snitch-style outbound connection monitor and application firewall for Windows.</p>
+        <p class="tech">C# · WPF · .NET</p>
       </li>
       <li>
         <a href="https://github.com/saboorsarem/modelfit">modelfit</a>
         <p>Will this model run on your machine? Sizes weights and KV cache, picks a GGUF quant, prints the llama-server command.</p>
+        <p class="tech">Python · llama.cpp</p>
       </li>
       <li>
         <a href="https://github.com/saboorsarem/laptop-bench">laptop-bench</a>
         <p>Benchmark coding models on the hardware you own: pass@1, tok/s, TTFT and RAM on any OpenAI-compatible endpoint.</p>
+        <p class="tech">Python · local LLMs</p>
       </li>
     </ul>
   </section>

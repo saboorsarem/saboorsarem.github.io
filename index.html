@@ -349,12 +349,13 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(function (rel) {
     var el = document.getElementById("ver");
-    el.textContent = rel.tag_name.replace(/^ava-/, "");
+    var ver = rel.tag_name.replace(/^ava-/, "");
+    el.textContent = ver;
     el.hidden = false;
     var asset = (rel.assets || []).filter(function (a) { return /Setup\.exe$/i.test(a.name); })[0];
     if (asset) {
       var mb = Math.round(asset.size / 1048576) + " MB";
-      document.getElementById("dl").textContent = "Download installer · " + mb;
+      document.getElementById("dl").textContent = "Download installer · v" + ver + " · " + mb;
       document.getElementById("sz").textContent = "Download · " + mb;
     }
   })

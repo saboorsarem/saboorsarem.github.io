@@ -136,11 +136,10 @@
             color: var(--neon); margin: 26px 0 12px; }
   .doc h4:first-child { margin-top: 0; }
   .doc p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); line-height: 1.6; }
-  .doc ul, .doc ol { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 9px;
-                     font-size: .9rem; color: var(--muted); }
+  .doc ul { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 9px;
+            font-size: .9rem; color: var(--muted); }
   .doc li { line-height: 1.55; }
   .doc strong { color: var(--fg); font-weight: 600; }
-  .doc em { color: var(--fg); font-style: normal; border-bottom: 1px dotted var(--line); }
   .doc code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
   .doc a { color: var(--fg); border-bottom: 1px solid var(--line); }
   .doc a:hover { color: var(--neon); border-color: var(--neon); }
@@ -149,19 +148,6 @@
                      vertical-align: top; color: var(--muted); }
   .doc thead th { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
                   color: var(--neon); }
-  .doc tbody th { color: var(--fg); font-weight: 600; white-space: nowrap; }
-  .doc pre { overflow-x: auto; margin: 0 0 16px; padding: 14px; border: 1px solid var(--line);
-             background: rgba(0, 0, 0, .45); font-family: var(--mono); font-size: .72rem; line-height: 1.55;
-             color: var(--fg); }
-  .doc details { border-top: 1px solid var(--line); padding: 14px 0 4px; }
-  .doc summary { cursor: pointer; font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
-                 text-transform: uppercase; color: var(--neon); }
-  .doc summary:hover { color: var(--fg); }
-  .doc details > *:not(summary) { margin-top: 12px; }
-  .doc h5 { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; color: var(--fg);
-            margin: 18px 0 8px; }
-  .doc p.note { border: 1px solid rgba(255, 0, 128, .35); background: rgba(255, 0, 128, .06);
-                padding: 10px 12px; }
   .doc p.sign { margin: 22px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--neon); }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
@@ -217,18 +203,17 @@
         <h3>AVA</h3>
         <span class="ver" id="ver" hidden></span>
       </div>
-      <p class="lead">Persian, English and Russian speech-to-text for Windows. One floating orb, nothing else.
-        Speak &mdash; AVA detects the language and the text appears in whatever application you are writing in.</p>
+      <p class="lead">Persian, English and Russian speech-to-text for Windows. One floating orb, nothing else:
+        tap it, speak, tap again &mdash; the text is already typed into whatever application you were writing in.</p>
 
       <video class="demo" src="ava-intro.mp4" controls preload="metadata" playsinline></video>
 
       <ul class="chips">
-        <li>Windows &middot; Linux &middot; macOS &middot; Android &middot; iOS</li>
-        <li>.NET 8</li>
-        <li>C# / WinForms</li>
-        <li>Persian &middot; English &middot; Russian</li>
-        <li>MIT</li>
-        <li>Inference offline</li>
+        <li>Persian</li>
+        <li>English</li>
+        <li>Russian</li>
+        <li>Auto language</li>
+        <li>Offline</li>
       </ul>
 
       <div class="dl">
@@ -237,347 +222,56 @@
 
       <div class="doc">
         <h4>What it is</h4>
-        <p>AVA is a desktop dictation app for Persian (<code>fa-IR</code>), English and Russian. It sits on the
-          desktop as a single floating orb, records your microphone locally, recognises speech on this computer,
-          detects the spoken language and <strong>types the result straight into the focused window</strong> &mdash;
-          an editor, a chat, a browser field, any application.</p>
-        <p>It is a native Windows application (C# / .NET 8 / WinForms) with a local Python speech engine running as a
-          sidecar process. No audio leaves the machine.</p>
-
-        <h4>Tap &middot; Talk &middot; Done</h4>
-        <ol>
-          <li><strong>Tap</strong> the orb in whatever app you are already in &mdash; it never takes focus.</li>
-          <li><strong>Talk</strong> in Persian, English or Russian; the model transcribes locally, nothing is uploaded.</li>
-          <li><strong>Tap</strong> again &mdash; the text is already typed at your cursor. Nothing to paste and no
-            language to choose.</li>
-        </ol>
-
-        <h4>Features</h4>
-        <ul>
-          <li><strong>Direct typing</strong> &mdash; recognised text is inserted with Unicode input events, so it works
-            in any app, any keyboard layout. If AVA's own settings window has focus, it returns to the app you were
-            writing in before typing. No clipboard stealing.</li>
-          <li><strong>Never steals focus</strong> &mdash; the orb is a <code>WS_EX_NOACTIVATE</code> layered window, so
-            the caret stays where you were writing.</li>
-          <li><strong>Automatic language detection</strong> &mdash; the default <em>Auto</em> mode recognises whether you
-            are speaking Persian, English or Russian on each phrase and decodes it with the matching model. No model
-            switching, no language menu.</li>
-          <li><strong>Visible update badge</strong> &mdash; when a newer build is published on this site, the orb shows
-            an animated download badge with a rotating ring. Click the badge to open the update page; it disappears when
-            AVA is current.</li>
-          <li><strong>Four engines, your call</strong> &mdash; <em>Fast</em> (Shenava Koochik, Persian offline CTC,
-            5&times; faster than real time, 14.3&nbsp;% WER), <em>Accurate</em> (Nemotron streaming Persian, text while
-            you speak, 11.0&nbsp;% WER but slower than real time on a CPU), <em>English</em> (Parakeet 110M in Auto,
-            Parakeet 0.6B v3 manually) and <em>Russian</em> (GigaAM v3 CTC with punctuation). Each language has its own
-            dedicated model instead of a small multilingual one.</li>
-          <li><strong>Persian text clean-up</strong> &mdash; punctuation, Persian digits, ZWNJ, filler removal.</li>
-          <li><strong>One-file UX</strong> &mdash; a mint orb with a live equaliser: click to dictate, right click for
-            the radial menu, drag to move, edge snapping, position remembered.</li>
-          <li><strong>Your hotkey</strong> &mdash; one key is enough. <code>Alt</code> is the default out of the box;
-            click the pill in Settings and press any F-key, <code>Alt</code> or a chord you want, and it is checked with
-            Windows before it is kept.</li>
-          <li><strong>Dashboard &amp; history</strong> &mdash; words dictated, dictations, streak, speaking time and WPM,
-            plus every transcription with search, copy and delete. Stored locally in
-            <code>%APPDATA%\AVA\history.json</code>, never uploaded.</li>
-          <li><strong>Private by design</strong> &mdash; audio is processed locally; the only network calls are the
-            one-time model downloads.</li>
-        </ul>
+        <p>AVA is a desktop dictation app for Persian (<code>fa-IR</code>), English and Russian. It sits on the desktop
+          as a single floating orb, records locally, recognises speech on your own computer and types the result
+          straight into the focused window. No audio leaves the machine.</p>
 
         <h4>Automatic language detection, four models</h4>
-        <p><strong>Auto</strong> is the default card. It listens to each phrase, identifies the language on this PC and
-          sends the audio to the right model:</p>
+        <p><strong>Auto</strong> is the default card: it identifies the language on every phrase on this PC and sends
+          the audio to the matching offline model.</p>
         <table>
           <thead>
-            <tr><th>Detected</th><th>Model</th><th>Size</th><th>Typical decode</th></tr>
+            <tr><th>Model</th><th>Language</th><th>Size</th><th>Speed</th></tr>
           </thead>
           <tbody>
-            <tr><td>Persian</td><td>Shenava Koochik CTC</td><td>~0.45 GB</td><td>0.1 s</td></tr>
-            <tr><td>English</td><td>NVIDIA Parakeet 110M CTC</td><td>~465 MB</td><td>0.1 s</td></tr>
-            <tr><td>Russian</td><td>Sber GigaAM v3 CTC</td><td>~225 MB</td><td>0.2 s</td></tr>
+            <tr><td><strong>Koochik (fast)</strong></td><td>Persian</td><td>~0.45 GB</td><td>about 5&times; faster than real time</td></tr>
+            <tr><td><strong>Nemotron (accurate)</strong></td><td>Persian</td><td>~2.5 GB</td><td>slower than real time on a CPU</td></tr>
+            <tr><td><strong>Parakeet (English)</strong></td><td>English</td><td>~670 MB</td><td>about 1 s per phrase</td></tr>
+            <tr><td><strong>GigaAM (Russian)</strong></td><td>Russian</td><td>~225 MB</td><td>about 0.3 s per phrase</td></tr>
           </tbody>
         </table>
-        <p>The language detector is Whisper base, used <strong>only</strong> to choose one of those three languages
-          &mdash; never to transcribe. Only English and Russian labels are trusted; anything else maps to Persian, the
-          app's primary language. That kept all test phrases correct, including Persian sentences the detector called
-          German or Hebrew, while costing about 0.2 s per phrase. All models are warmed at load, so the first phrase is
-          fast too.</p>
-        <p>The manual cards below remain for when you want to force a model:</p>
-        <table>
-          <thead>
-            <tr><th>Model</th><th>Language</th><th>Engine</th><th>Size</th><th>Speed</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Koochik (fast)</strong></td><td>Persian</td><td>Shenava v1.0, offline CTC</td><td>~0.45 GB</td><td>about 5&times; faster than real time</td></tr>
-            <tr><td><strong>Nemotron (accurate)</strong></td><td>Persian</td><td>Streaming FastConformer + RNN-T</td><td>~2.5 GB</td><td>slower than real time on a CPU</td></tr>
-            <tr><td><strong>Parakeet (English)</strong></td><td>English</td><td>NVIDIA Parakeet TDT 0.6B v3</td><td>~670 MB</td><td>about 1 s per phrase</td></tr>
-            <tr><td><strong>GigaAM (Russian)</strong></td><td>Russian</td><td>GigaAM v3 CTC, punctuation included</td><td>~225 MB</td><td>about 0.3 s per phrase</td></tr>
-          </tbody>
-        </table>
-        <p>Auto keeps the three offline models loaded, so changing language costs no model load time.
-          <code>AVA-Setup.exe</code> installs Nemotron during setup; Auto downloads the Persian, English and Russian
-          models on first use (~1.3 GB including the language detector), and the portable zip fetches whichever model
-          you pick. After that AVA works offline.</p>
+        <p>In Auto the English model is a smaller Parakeet 110M (~465 MB, ~0.1 s per phrase) and the detector itself is
+          Whisper base, used only to choose the language and never to transcribe. Models are downloaded once, on first
+          use, and cached locally; after that AVA works fully offline.</p>
 
-        <h4>How it works</h4>
-<pre>C# AVA.exe (WinForms)  &lt;── NDJSON over 127.0.0.1 ──&gt;  bridge/server.py
-orb · menu · typing       hello / load / start / stop      torch / sherpa-onnx
-                          status / partial / final / level           │
-                                                            microphone (16 kHz)</pre>
-        <p>The C# side owns the interface and the text insertion. The Python side owns the model, the microphone and
-          the segmentation; it streams <code>partial</code>/<code>final</code> hypotheses back over a loopback socket.</p>
-
-        <h4>Requirements</h4>
-        <table>
-          <tbody>
-            <tr><th scope="row">OS</th><td>Windows 10 / 11, x64</td></tr>
-            <tr><th scope="row">Runtime</th><td>none &mdash; the download carries .NET and its own Python</td></tr>
-            <tr><th scope="row">Python</th><td>only to build from source (3.11+, 3.13 verified)</td></tr>
-            <tr><th scope="row">Disk</th><td>~6.5 GB with Auto (three languages and the detector); Nemotron adds another 2.5 GB</td></tr>
-            <tr><th scope="row">Hardware</th><td>any x64 CPU; GPU optional</td></tr>
-          </tbody>
-        </table>
-
-        <h4>Download</h4>
-        <p>Grab <strong><code>AVA-Setup.exe</code></strong> above and run it: it unpacks AVA to
-          <code>%LOCALAPPDATA%\AVA</code> with a progress bar, downloads the accurate Nemotron model so both engines are
-          ready, and starts the app. The model download (2.5 GB) can be skipped and happens on first use instead. If you
-          prefer a portable copy, <strong><code>AVA-win64.zip</code></strong> works the same way &mdash; unzip it
-          anywhere and run <code>AVA.exe</code>. Nothing else has to be installed: both carry the .NET runtime, an
-          embeddable Python and the speech libraries.</p>
-        <p>The speech models are downloaded from Hugging Face when first needed. Auto fetches the Persian, English and
-          Russian models plus the language detector (~1.3 GB); the manual cards are 0.45 GB (fast), 2.5 GB (accurate),
-          670 MB (English 0.6B) and 225 MB (Russian). The setup keeps Nemotron in
-          <code>%LOCALAPPDATA%\AVA\models</code>, the portable copy uses the Hugging Face cache; the orb shows the
-          progress. After that AVA works offline.</p>
-        <p class="note"><strong>SmartScreen</strong> &mdash; the installer is not code-signed, so Windows may show
-          &ldquo;Windows protected your PC &mdash; Unknown publisher&rdquo;. Choose <strong>More info &rarr; Run
-          anyway</strong>. A trusted code-signing certificate is the only way to remove this warning for users.</p>
-
-        <h4>Other platforms</h4>
-        <p>The ports for the other systems live in the same repository:</p>
-        <table>
-          <thead>
-            <tr><th>Platform</th><th>Where</th><th>Build</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Linux</td><td><code>src/AVADesktop</code></td><td><code>scripts/build-linux.sh</code></td><td>working port &mdash; Avalonia UI + the same Python bridge</td></tr>
-            <tr><td>macOS</td><td><code>src/AVADesktop</code></td><td><code>scripts/build-mac.sh</code></td><td>working port &mdash; the same code as Linux</td></tr>
-            <tr><td>Android</td><td><code>android/</code></td><td><code>gradle assembleDebug</code></td><td>offline voice keyboard (IME), fast engine</td></tr>
-            <tr><td>iOS / iPadOS</td><td><code>ios/</code></td><td>XcodeGen project</td><td>in-app dictation, fast engine</td></tr>
-            <tr><td>HarmonyOS</td><td><code>harmonyos/</code></td><td>DevEco Studio 5</td><td>scaffold &mdash; native engine pending</td></tr>
-          </tbody>
-        </table>
-        <p>Architecture, protocol and per-platform notes: <code>docs/platforms.md</code>. GitHub Actions builds the
-          artifacts automatically on the tags <code>linux-v*</code>, <code>mac-v*</code>, <code>android-v*</code> and
-          <code>ios-v*</code>.</p>
-
-        <details>
-          <summary>Usage</summary>
-          <table>
-            <thead>
-              <tr><th>Action</th><th>Result</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Left click</strong></td><td>start dictating; click again to stop</td></tr>
-              <tr><td><strong>Right click</strong></td><td>open the radial menu: AUTO, MODELS, QUIT, SETTINGS, HOME</td></tr>
-              <tr><td><strong>Hotkey</strong></td><td><code>Alt</code> on its own; click the pill in Settings to pick another key</td></tr>
-              <tr><td><strong>Drag</strong></td><td>move the orb; it snaps to the screen edge</td></tr>
-            </tbody>
-          </table>
-          <p>The window behind <strong>HOME</strong>, <strong>HISTORY</strong>, <strong>SETTINGS</strong> and
-            <strong>ABOUT</strong> has four pages: the dashboard (words, dictations, streak, time, WPM, current setup,
-            recent dictations), the history (search, copy, delete, clear all, grouped by day), the settings (launch at
-            startup, update check, feedback, hotkey, activation mode, speech model) and the about page (credits, model
-            licences, privacy). The toolbar has minimise and maximise next to close.</p>
-          <p><strong>Activation mode</strong> decides what the orb and the hotkey do: <em>Tap</em> toggles recording,
-            <em>Hold</em> records only while you press, <em>Both</em> accepts either. A quick tap on the hotkey still
-            toggles in <em>Both</em>.</p>
-          <p>Switching engines happens on demand: the bridge loads the chosen model and drops the other one, because they
-            do not fit in RAM together. <em>Auto</em> starts in about 7 s once its models are cached and keeps Persian,
-            English and Russian ready; <em>Fast</em> starts in about 3 s, <em>Accurate</em> in 15&ndash;45 s, and the
-            English / Russian cards in a few seconds. In Auto each phrase is identified and decoded by the matching model
-            after a short pause; language ID and decoding together take about 0.2&ndash;0.4 s, and text reaches the
-            focused app roughly 0.6 s after you stop speaking. During continuous speech Auto types in chunks every 7
-            seconds.</p>
-          <p>Text is typed as each phrase is closed by the model &mdash; in Auto after about 0.6 s of silence or every
-            7 s of continuous speech, and in the manual engines after their own pause. It goes straight into the focused
-            app or website; if AVA's settings window happens to be focused, AVA returns to the last external app first.
-            Windows blocks synthetic typing into elevated (admin) apps; AVA copies the text and tells you so. Every
-            finished run is added to the dashboard and history.</p>
-        </details>
-
-        <details>
-          <summary>Troubleshooting</summary>
-          <table>
-            <thead>
-              <tr><th>Symptom</th><th>Cause / fix</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Orb stays amber</td><td>Model still loading, or the engine failed &mdash; see <code>%APPDATA%\AVA\bridge.log</code></td></tr>
-              <tr><td>Nothing is typed</td><td>The target window runs elevated; Windows blocks input from a non-elevated process. The text is copied and AVA shows a note. Run AVA as administrator to type there</td></tr>
-              <tr><td>Hotkey does nothing</td><td>Another app already owns that key &mdash; pick another one in Settings</td></tr>
-              <tr><td><code>bridge/server.py not found</code></td><td>Run <code>scripts\setup.bat</code> from the repository root</td></tr>
-              <tr><td>Wrong microphone</td><td><code>bridge.log</code> lists the device; set the default input in Windows</td></tr>
-            </tbody>
-          </table>
-          <p>Logs, settings and history live in <code>%APPDATA%\AVA\</code> (<code>ava.log</code>,
-            <code>bridge.log</code>, <code>settings.json</code>, <code>history.json</code>).</p>
-        </details>
-
-        <details>
-          <summary>Changelog</summary>
-          <h5>1.3.1 &mdash; 2026-11-01</h5>
-          <ul>
-            <li><strong>Orb update icon</strong> &mdash; when a newer build is on this site, the whole orb flips
-              vertically from the equalizer into a centered download mark with a rotating ring. Clicking it opens the
-              update page and restores the normal orb; if the update is still pending, the download face returns on the
-              next launch.</li>
-            <li><strong>Website update check</strong> &mdash; AVA reads the public release feed behind this site at
-              startup and hourly instead of the private repository. The Settings update check uses the same source.</li>
-          </ul>
-
-          <h5>1.3.0 &mdash; 2026-10-31</h5>
-          <ul>
-            <li><strong>Automatic language detection</strong> &mdash; the new default <em>Auto</em> card detects
-              Persian, English or Russian on every phrase and routes it to the matching offline model. The detector is
-              Whisper base, used only for language ID and never for transcription; English and Russian labels are
-              trusted and anything else maps to Persian. No more switching models by hand.</li>
-            <li><strong>Fast Auto</strong> &mdash; native sherpa-onnx language ID replaces the PyTorch detector, cutting
-              Auto startup from ~16 s to ~7 s and lowering memory. The English auto model is Parakeet 110M (~0.1 s per
-              phrase); the manual English card keeps the larger 0.6B model for maximum accuracy.</li>
-            <li><strong>English and Russian, for real</strong> &mdash; the small multilingual Whisper base was weak in
-              both languages. It is replaced by two dedicated models: NVIDIA <strong>Parakeet TDT 0.6B v3</strong> for
-              English (~670 MB) and <strong>GigaAM v3</strong> for Russian (~225 MB, punctuation included). Both run on
-              sherpa-onnx, offline, with no PyTorch and no API key; a phrase transcribes in about 0.2&ndash;1 s.</li>
-            <li><strong>Five model cards</strong> &mdash; Settings &rarr; Speech model shows <em>Auto
-              (recommended)</em>, <em>Koochik (fast)</em>, <em>Nemotron (accurate)</em>, <em>Parakeet (English)</em> and
-              <em>GigaAM (Russian)</em>, each with its language, size and download state.</li>
-            <li><strong>Menu matches the workflow</strong> &mdash; the radial menu now offers <strong>AUTO</strong> and
-              <strong>MODELS</strong> instead of FAST / ACCURATE.</li>
-            <li><strong>Typing follows your app</strong> &mdash; recognised text still goes to the focused app or
-              website. If AVA's settings window is focused, AVA returns to the last external app before typing. When
-              Windows blocks typing into an elevated app, the text is copied and AVA explains what happened.</li>
-          </ul>
-
-          <h5>1.2.0 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>English and Russian, automatically</strong> &mdash; a third engine, Whisper base, detects the
-              language on device and transcribes English, Russian or Persian without changing a setting. It downloads
-              once (~150 MB) when you first pick it; the Persian models stay for maximum accuracy.</li>
-            <li><strong>Typing follows your app</strong> &mdash; including when Windows blocks typing into an elevated
-              app.</li>
-          </ul>
-
-          <h5>1.1.8 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>About page</strong> &mdash; a fourth tab after Settings: what AVA is, who built it, the
-              third-party model licences and the offline/privacy statement.</li>
-          </ul>
-
-          <h5>1.1.7 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>Centred menu brand</strong> &mdash; the <code>AVA</code> label in the radial menu now sits in the
-              middle.</li>
-            <li><strong>Transparent exe icon</strong> &mdash; app and setup icons rebuilt from the clean transparent logo.</li>
-          </ul>
-
-          <h5>1.1.6 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>Drag fixed</strong> &mdash; the orb follows the cursor exactly; the drag works in screen
-              coordinates and still snaps to screen edges.</li>
-          </ul>
-
-          <h5>1.1.5 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>PyTorch 2.13.0</strong> &mdash; closes four Dependabot advisories; both engines were re-tested.</li>
-            <li><strong>Bundled Python isolation</strong> &mdash; the bridge ignores globally installed Python packages
-              (<code>PYTHONNOUSERSITE=1</code>).</li>
-          </ul>
-
-          <h5>1.1.4 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>New logo everywhere</strong> &mdash; the mark is the exe, window and setup icon.</li>
-            <li><strong>Both models documented</strong> &mdash; Koochik (fast) and Nemotron (accurate) with sizes and speed.</li>
-          </ul>
-
-          <h5>1.1.3 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong>New app icon</strong> &mdash; the mint equalizer mark is the exe icon and the hero image.</li>
-            <li><strong>Both models ready after setup</strong> &mdash; the installer downloads the accurate Nemotron
-              model (2.5 GB) with a progress bar and a skip option.</li>
-            <li><strong>Installed model loads locally</strong> &mdash; the setup writes the model into
-              <code>%LOCALAPPDATA%\AVA\models\nemotron</code>.</li>
-            <li><strong>Corrected model size</strong> &mdash; the accurate model is 2.5 GB, not 1.2 GB.</li>
-          </ul>
-
-          <h5>1.1.2 &mdash; 2026-10-27</h5>
-          <ul>
-            <li><strong><code>Alt</code> is the default hotkey</strong> &mdash; one tap starts dictation, another stops
-              it. <code>Alt+Tab</code>, <code>Alt+F4</code> and AltGr are ignored.</li>
-            <li><strong>Alt can be captured in Settings</strong> &mdash; clicking the hotkey pill and pressing Alt now
-              records it.</li>
-            <li><strong>Dark scrollbars</strong> &mdash; the Settings page no longer shows a white strip.</li>
-            <li><strong><code>AVA-Setup.exe</code></strong> &mdash; a one-file installer that unpacks AVA to
-              <code>%LOCALAPPDATA%\AVA</code> and starts it; <code>AVA-win64.zip</code> remains for portable use.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Project layout</summary>
-<pre>src/AVA/            C# application
-  OrbForm.cs        layered per-pixel-alpha orb, tap/hold, drag and snap
-  RadialMenu.cs     five-action radial menu (AUTO, MODELS, HOME, SETTINGS, QUIT)
-  HomeWindow.cs     dashboard, history and settings window
-  Ui.cs             dark controls: pill, toggle, segment, card, transcript row
-  History.cs        transcriptions and stats, persisted as JSON
-  App.cs            state machine, bridge events, typing
-  BridgeProcess.cs  starts the bundled Python bridge, or the dev venv
-  Interop/          Win32: layered window, topmost, SendInput typing, hotkey
-src/AVADesktop/     Avalonia port of the same app for Linux and macOS
-src/bridge/         Python speech engine (NDJSON server)
-  engines/          auto language routing / transformers / sherpa-onnx CTC / mock
-  text/             Persian normalisation and punctuation
-android/            Android voice keyboard (IME) on sherpa-onnx
-ios/                iOS / iPadOS dictation app (XcodeGen)
-harmonyos/          HarmonyOS NEXT scaffold (DevEco Studio 5)
-scripts/            setup, run, build, cross-platform build scripts
-docs/               screenshots, platform notes (docs/platforms.md)</pre>
-        </details>
-
-        <h4>Privacy</h4>
-        <p>Audio is captured and recognised on this computer. Recognised text goes to the focused window, to the
-          clipboard, and nowhere else. The only outbound request is the model download from Hugging Face. Record only
-          speech you have the right to record.</p>
-
-        <h4>Credits</h4>
+        <h4>Privacy &amp; local processing</h4>
         <ul>
-          <li><strong>Persian model</strong> &mdash;
-            <a href="https://huggingface.co/mehdi-hf/nemotron-asr-streaming-farsi">mehdi-hf/nemotron-asr-streaming-farsi</a>,
-            a derivative of NVIDIA Nemotron, under the OpenMDW 1.1 licence.</li>
-          <li><strong>English models</strong> &mdash;
-            <a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">NVIDIA Parakeet</a> (CC-BY-4.0): the
-            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-parakeet_tdt_ctc_110m-en-36000">110M CTC export</a>
-            for Auto and the
-            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8">0.6B v3 int8 export</a>
-            for the manual card.</li>
-          <li><strong>Russian model</strong> &mdash;
-            <a href="https://huggingface.co/ai-sage/GigaAM-v3">GigaAM v3</a> by Sber (MIT), run through the
-            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-ctc-punct-giga-am-v3-russian-2025-12-16">sherpa-onnx export</a>.</li>
-          <li><strong>Language detector</strong> &mdash;
-            <a href="https://huggingface.co/openai/whisper-base">OpenAI Whisper base</a> (MIT), run through the
-            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base">sherpa-onnx export</a>; it only chooses
-            the model and never produces dictation text.</li>
-          <li><strong>Speech engine</strong> &mdash; based on
-            <a href="https://github.com/saboorsarem/PersianSTT">PersianSTT</a>, with
-            <a href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for the offline models.</li>
-          <li><strong>Floating-button interaction</strong> &mdash; inspired by DNotes.</li>
+          <li><strong>100% Offline.</strong> All audio processing and transcription are executed entirely on your local machine.</li>
+          <li><strong>Total Privacy.</strong> Your voice data and text are never transmitted to any cloud servers or third-party APIs.</li>
+          <li><strong>Volatile Memory.</strong> Audio chunks are processed in RAM and discarded immediately after typing.</li>
+          <li><strong>One network call.</strong> The only outbound request is the one-time model download from Hugging Face.</li>
         </ul>
 
-        <h4>License</h4>
-        <p>Application code: MIT. Model weights keep their own licences (OpenMDW 1.1, CC-BY-4.0, MIT) and are
-          downloaded, not bundled.</p>
+        <h4>Third-party licenses</h4>
+        <p>AVA runs fully offline and incorporates the following open-weights models and libraries. Model weights are
+          downloaded on first use, not bundled, and keep their own licences. Application code is MIT.</p>
+        <ul>
+          <li><strong>Nemotron ASR Streaming Farsi</strong> (Persian, accurate) &mdash;
+            <a href="https://huggingface.co/mehdi-hf/nemotron-asr-streaming-farsi">mehdi-hf/nemotron-asr-streaming-farsi</a>
+            &middot; OpenMDW License Agreement, v1.1</li>
+          <li><strong>Shenava-Koochik v1.0</strong> (Persian, fast CTC) &mdash; Apache License 2.0
+            (<a href="https://apache.org">apache.org</a>)</li>
+          <li><strong>NVIDIA Parakeet</strong> (English) &mdash;
+            <a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">parakeet-tdt-0.6b-v3</a> &middot; CC-BY-4.0</li>
+          <li><strong>GigaAM v3</strong> (Russian) &mdash; <a href="https://huggingface.co/ai-sage/GigaAM-v3">ai-sage/GigaAM-v3</a>
+            &middot; MIT</li>
+          <li><strong>OpenAI Whisper base</strong> (language detector only) &mdash;
+            <a href="https://huggingface.co/openai/whisper-base">openai/whisper-base</a> &middot; MIT</li>
+          <li><strong>sherpa-onnx</strong> &mdash; <a href="https://github.com/k2-fsa/sherpa-onnx">k2-fsa/sherpa-onnx</a>
+            offline speech engine</li>
+        </ul>
 
-        <p class="sign">AVA &mdash; Your Voice. Your Words.<br>Developed by DANISHYARSI</p>
+        <p class="sign">AVA &mdash; Your Voice. Your Words.<br>Built &amp; Engineered by DANISHYARSI</p>
       </div>
     </article>
   </section>

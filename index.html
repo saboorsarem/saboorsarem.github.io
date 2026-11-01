@@ -128,20 +128,41 @@
 
   .demo { display: block; width: 100%; height: auto; margin: 18px 0; border: 1px solid var(--line); background: #000; }
 
-  .privacy { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .05);
-             padding: 16px 18px; }
-  .privacy-title { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-                   color: var(--neon); margin: 24px 0 10px; }
-  .privacy > .privacy-title:first-child { margin-top: 0; }
-  .privacy p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); }
-  .privacy p.privacy-lead { font-family: var(--mono); color: var(--fg); }
-  .privacy ul { list-style: none; padding: 0; margin: 0 0 4px; display: grid; gap: 10px;
-                font-size: .9rem; color: var(--muted); }
-  .privacy li { line-height: 1.55; }
-  .privacy strong { color: var(--fg); font-weight: 600; }
-  .privacy code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
-  .privacy a { color: var(--fg); border-bottom: 1px solid var(--line); }
-  .privacy a:hover { color: var(--neon); border-color: var(--neon); }
+  .lead { font-size: 1rem; color: var(--fg); }
+
+  .doc { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .04);
+         padding: 18px 20px; }
+  .doc h4 { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+            color: var(--neon); margin: 26px 0 12px; }
+  .doc h4:first-child { margin-top: 0; }
+  .doc p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); line-height: 1.6; }
+  .doc ul, .doc ol { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 9px;
+                     font-size: .9rem; color: var(--muted); }
+  .doc li { line-height: 1.55; }
+  .doc strong { color: var(--fg); font-weight: 600; }
+  .doc em { color: var(--fg); font-style: normal; border-bottom: 1px dotted var(--line); }
+  .doc code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
+  .doc a { color: var(--fg); border-bottom: 1px solid var(--line); }
+  .doc a:hover { color: var(--neon); border-color: var(--neon); }
+  .doc table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: .84rem; }
+  .doc th, .doc td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
+                     vertical-align: top; color: var(--muted); }
+  .doc thead th { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+                  color: var(--neon); }
+  .doc tbody th { color: var(--fg); font-weight: 600; white-space: nowrap; }
+  .doc pre { overflow-x: auto; margin: 0 0 16px; padding: 14px; border: 1px solid var(--line);
+             background: rgba(0, 0, 0, .45); font-family: var(--mono); font-size: .72rem; line-height: 1.55;
+             color: var(--fg); }
+  .doc details { border-top: 1px solid var(--line); padding: 14px 0 4px; }
+  .doc summary { cursor: pointer; font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
+                 text-transform: uppercase; color: var(--neon); }
+  .doc summary:hover { color: var(--fg); }
+  .doc details > *:not(summary) { margin-top: 12px; }
+  .doc h5 { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; color: var(--fg);
+            margin: 18px 0 8px; }
+  .doc p.note { border: 1px solid rgba(255, 0, 128, .35); background: rgba(255, 0, 128, .06);
+                padding: 10px 12px; }
+  .doc p.sign { margin: 22px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--neon); }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
   .stack { margin-top: 22px; }
@@ -196,117 +217,367 @@
         <h3>AVA</h3>
         <span class="ver" id="ver" hidden></span>
       </div>
-      <p>Persian, English and Russian speech-to-text for Windows. One floating orb, nothing else: tap it, speak,
-        tap again and the text is already typed into whatever application you were writing in. AVA detects the
-        spoken language and routes each phrase to the matching local model &mdash; no cloud, no API keys, no audio
-        leaving the machine. Native C# / .NET 8 / WinForms app with a Python speech engine as a sidecar process.</p>
+      <p class="lead">Persian, English and Russian speech-to-text for Windows. One floating orb, nothing else.
+        Speak &mdash; AVA detects the language and the text appears in whatever application you are writing in.</p>
+
       <video class="demo" src="ava-intro.mp4" controls preload="metadata" playsinline></video>
+
       <ul class="chips">
-        <li>Persian</li>
-        <li>English</li>
-        <li>Russian</li>
-        <li>Auto language</li>
+        <li>Windows &middot; Linux &middot; macOS &middot; Android &middot; iOS</li>
+        <li>.NET 8</li>
         <li>C# / WinForms</li>
-        <li>Offline</li>
+        <li>Persian &middot; English &middot; Russian</li>
+        <li>MIT</li>
+        <li>Inference offline</li>
       </ul>
+
       <div class="dl">
-        <a class="btn" id="dl" href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">Download installer · 334 MB</a>
+        <a class="btn" id="dl" href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">Download installer &middot; 334 MB</a>
       </div>
-      <ul class="platforms">
-        <li class="ready">
-          <a href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.4 10.2 4.4v7.2H3zM11.2 4.2 21 2.8v8.8h-9.8zM3 12.7h7.2V19.9L3 18.8zM11.2 12.7H21v8.5l-9.8-1.4z"/></svg>
-            <span class="name">Windows</span>
-            <span class="state" id="sz">Download · 334 MB</span>
-          </a>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-            <span class="name">macOS</span>
-            <span class="state">Source build</span>
-          </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 00-.402-.533 1.45 1.45 0 00-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 00.314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 01.647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 01-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg>
-            <span class="name">Linux</span>
-            <span class="state">Source build</span>
-          </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg>
-            <span class="name">Android</span>
-            <span class="state">Source build</span>
-          </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-            <span class="name">iOS</span>
-            <span class="state">Source build</span>
-          </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-            <span class="name">iPadOS</span>
-            <span class="state">Source build</span>
-          </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.861 0H3.59v3.548h3.861V0H9.19v8.883H7.458V5.136H3.59v3.746H1.858Zm8.248 8.883ZM13.854 0h1.706l2.809 4.7h.1L21.278 0h1.719v8.883h-1.719v-4.38l.1-1.489h-.1l-2.334 3.983h-1.039l-2.347-3.983h-.1l.1 1.489v4.38h-1.706Zm4.702 21.648a4.082 4.082 0 0 1-1.154-.161 3.417 3.417 0 0 1-1.01-.484 3.5 3.5 0 0 1-.8-.782 3.817 3.817 0 0 1-.538-1.092l1.666-.62a2.411 2.411 0 0 0 .643 1.116 1.683 1.683 0 0 0 1.207.434 2.173 2.173 0 0 0 .524-.062 1.749 1.749 0 0 0 .459-.2 1.02 1.02 0 0 0 .328-.335.88.88 0 0 0 .118-.459 1.052 1.052 0 0 0-.092-.447 1.031 1.031 0 0 0-.315-.373 2.538 2.538 0 0 0-.564-.335 8.135 8.135 0 0 0-.852-.335l-.577-.2a4.753 4.753 0 0 1-.774-.335 3.44 3.44 0 0 1-.7-.509 2.662 2.662 0 0 1-.525-.695 2.093 2.093 0 0 1-.2-.918 2.248 2.248 0 0 1 .21-.968 2.433 2.433 0 0 1 .616-.794 2.87 2.87 0 0 1 .957-.533 3.726 3.726 0 0 1 1.246-.2 3.57 3.57 0 0 1 1.22.186 2.783 2.783 0 0 1 .879.459 2.468 2.468 0 0 1 .59.608 2.9 2.9 0 0 1 .328.633l-1.56.62a1.55 1.55 0 0 0-.485-.67 1.387 1.387 0 0 0-.944-.3 1.655 1.655 0 0 0-.957.261.754.754 0 0 0-.38.658.843.843 0 0 0 .367.682 4.232 4.232 0 0 0 1.167.534l.59.186a6.271 6.271 0 0 1 1.023.434 2.948 2.948 0 0 1 .8.57 2.191 2.191 0 0 1 .511.769 2.44 2.44 0 0 1 .183.98 2.317 2.317 0 0 1-.3 1.2 2.559 2.559 0 0 1-.747.819 3.361 3.361 0 0 1-1.036.484 4.184 4.184 0 0 1-1.128.161Zm-13.028 0a4.441 4.441 0 0 1-3.23-1.34 4.757 4.757 0 0 1-.956-1.476 4.912 4.912 0 0 1-.339-1.824 4.813 4.813 0 0 1 .339-1.811 4.569 4.569 0 0 1 .956-1.477 4.38 4.38 0 0 1 1.427-.992 4.5 4.5 0 0 1 1.8-.36 4.417 4.417 0 0 1 1.79.36 4.343 4.343 0 0 1 1.44.992 4.418 4.418 0 0 1 .944 1.477 4.67 4.67 0 0 1 .351 1.811 4.765 4.765 0 0 1-.351 1.824 4.589 4.589 0 0 1-.944 1.476 4.495 4.495 0 0 1-3.23 1.34Zm0-1.588a2.822 2.822 0 0 0 1.125-.223 2.761 2.761 0 0 0 .92-.621 2.723 2.723 0 0 0 .617-.955 3.321 3.321 0 0 0 .23-1.253 3.227 3.227 0 0 0-.23-1.24 2.7 2.7 0 0 0-.617-.968 2.759 2.759 0 0 0-.92-.62 2.821 2.821 0 0 0-1.125-.223 2.856 2.856 0 0 0-2.057.844 2.946 2.946 0 0 0-.617.968 3.388 3.388 0 0 0-.218 1.24 3.488 3.488 0 0 0 .218 1.253 2.972 2.972 0 0 0 .617.955 2.856 2.856 0 0 0 2.057.843Zm4.972 1.389Zm-8.269 1.039h6.5V24h-6.5Z"/></svg>
-            <span class="name">HarmonyOS</span>
-            <span class="state">Scaffold</span>
-          </li>
-      </ul>
 
-      <div class="privacy">
-        <p class="privacy-title">About AVA</p>
-        <p class="privacy-lead">AVA &mdash; Your Voice. Your Words.</p>
-        <p>Built &amp; Engineered by <strong>DANISHYARSI</strong>. AVA is a desktop dictation app for Persian
-          (<code>fa-IR</code>), English and Russian. It sits on the desktop as a single floating orb, records the
-          microphone locally, recognises speech on this computer, detects the spoken language and types the result
-          straight into the focused window &mdash; an editor, a chat, a browser field, any application. Native
-          Windows app in C# / .NET 8 / WinForms with a local Python speech engine as a sidecar process. Ports for
-          Linux, macOS, Android and iOS live in the same repository.</p>
+      <div class="doc">
+        <h4>What it is</h4>
+        <p>AVA is a desktop dictation app for Persian (<code>fa-IR</code>), English and Russian. It sits on the
+          desktop as a single floating orb, records your microphone locally, recognises speech on this computer,
+          detects the spoken language and <strong>types the result straight into the focused window</strong> &mdash;
+          an editor, a chat, a browser field, any application.</p>
+        <p>It is a native Windows application (C# / .NET 8 / WinForms) with a local Python speech engine running as a
+          sidecar process. No audio leaves the machine.</p>
 
-        <p class="privacy-title">What it does</p>
+        <h4>Tap &middot; Talk &middot; Done</h4>
+        <ol>
+          <li><strong>Tap</strong> the orb in whatever app you are already in &mdash; it never takes focus.</li>
+          <li><strong>Talk</strong> in Persian, English or Russian; the model transcribes locally, nothing is uploaded.</li>
+          <li><strong>Tap</strong> again &mdash; the text is already typed at your cursor. Nothing to paste and no
+            language to choose.</li>
+        </ol>
+
+        <h4>Features</h4>
         <ul>
-          <li><strong>Tap &middot; talk &middot; done.</strong> Tap the orb in whatever app you are already in,
-            speak, tap again &mdash; the text is already at your cursor. Nothing to paste, no language to choose.</li>
-          <li><strong>Never steals focus.</strong> The orb is a non-activating layered window, so the caret stays
-            where you were writing.</li>
-          <li><strong>Automatic language detection.</strong> <em>Auto</em> identifies Persian, English or Russian on
-            every phrase and decodes it with the matching model.</li>
-          <li><strong>Four engines.</strong> Koochik (Persian, ~0.45 GB, 14.3 % WER, 5&times; faster than real time),
-            Nemotron (Persian, ~2.5 GB, streaming, 11.0 % WER), Parakeet (English, ~670 MB), GigaAM (Russian,
-            ~225 MB, punctuation included).</li>
-          <li><strong>Persian text clean-up.</strong> Punctuation, Persian digits, ZWNJ and filler removal.</li>
-          <li><strong>Dashboard &amp; history.</strong> Words dictated, dictations, streak, speaking time and WPM,
-            plus every transcription with search, copy and delete &mdash; stored locally.</li>
-          <li><strong>Your hotkey.</strong> <code>Alt</code> out of the box; any F-key, <code>Alt</code> or chord can
-            be picked in Settings.</li>
+          <li><strong>Direct typing</strong> &mdash; recognised text is inserted with Unicode input events, so it works
+            in any app, any keyboard layout. If AVA's own settings window has focus, it returns to the app you were
+            writing in before typing. No clipboard stealing.</li>
+          <li><strong>Never steals focus</strong> &mdash; the orb is a <code>WS_EX_NOACTIVATE</code> layered window, so
+            the caret stays where you were writing.</li>
+          <li><strong>Automatic language detection</strong> &mdash; the default <em>Auto</em> mode recognises whether you
+            are speaking Persian, English or Russian on each phrase and decodes it with the matching model. No model
+            switching, no language menu.</li>
+          <li><strong>Visible update badge</strong> &mdash; when a newer build is published on this site, the orb shows
+            an animated download badge with a rotating ring. Click the badge to open the update page; it disappears when
+            AVA is current.</li>
+          <li><strong>Four engines, your call</strong> &mdash; <em>Fast</em> (Shenava Koochik, Persian offline CTC,
+            5&times; faster than real time, 14.3&nbsp;% WER), <em>Accurate</em> (Nemotron streaming Persian, text while
+            you speak, 11.0&nbsp;% WER but slower than real time on a CPU), <em>English</em> (Parakeet 110M in Auto,
+            Parakeet 0.6B v3 manually) and <em>Russian</em> (GigaAM v3 CTC with punctuation). Each language has its own
+            dedicated model instead of a small multilingual one.</li>
+          <li><strong>Persian text clean-up</strong> &mdash; punctuation, Persian digits, ZWNJ, filler removal.</li>
+          <li><strong>One-file UX</strong> &mdash; a mint orb with a live equaliser: click to dictate, right click for
+            the radial menu, drag to move, edge snapping, position remembered.</li>
+          <li><strong>Your hotkey</strong> &mdash; one key is enough. <code>Alt</code> is the default out of the box;
+            click the pill in Settings and press any F-key, <code>Alt</code> or a chord you want, and it is checked with
+            Windows before it is kept.</li>
+          <li><strong>Dashboard &amp; history</strong> &mdash; words dictated, dictations, streak, speaking time and WPM,
+            plus every transcription with search, copy and delete. Stored locally in
+            <code>%APPDATA%\AVA\history.json</code>, never uploaded.</li>
+          <li><strong>Private by design</strong> &mdash; audio is processed locally; the only network calls are the
+            one-time model downloads.</li>
         </ul>
 
-        <p class="privacy-title">Third-party licenses</p>
-        <p>AVA runs fully offline and incorporates the following open-weights models and libraries. Model weights are
-          downloaded on first use, not bundled, and keep their own licences. Application code is MIT.</p>
+        <h4>Automatic language detection, four models</h4>
+        <p><strong>Auto</strong> is the default card. It listens to each phrase, identifies the language on this PC and
+          sends the audio to the right model:</p>
+        <table>
+          <thead>
+            <tr><th>Detected</th><th>Model</th><th>Size</th><th>Typical decode</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Persian</td><td>Shenava Koochik CTC</td><td>~0.45 GB</td><td>0.1 s</td></tr>
+            <tr><td>English</td><td>NVIDIA Parakeet 110M CTC</td><td>~465 MB</td><td>0.1 s</td></tr>
+            <tr><td>Russian</td><td>Sber GigaAM v3 CTC</td><td>~225 MB</td><td>0.2 s</td></tr>
+          </tbody>
+        </table>
+        <p>The language detector is Whisper base, used <strong>only</strong> to choose one of those three languages
+          &mdash; never to transcribe. Only English and Russian labels are trusted; anything else maps to Persian, the
+          app's primary language. That kept all test phrases correct, including Persian sentences the detector called
+          German or Hebrew, while costing about 0.2 s per phrase. All models are warmed at load, so the first phrase is
+          fast too.</p>
+        <p>The manual cards below remain for when you want to force a model:</p>
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Language</th><th>Engine</th><th>Size</th><th>Speed</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Koochik (fast)</strong></td><td>Persian</td><td>Shenava v1.0, offline CTC</td><td>~0.45 GB</td><td>about 5&times; faster than real time</td></tr>
+            <tr><td><strong>Nemotron (accurate)</strong></td><td>Persian</td><td>Streaming FastConformer + RNN-T</td><td>~2.5 GB</td><td>slower than real time on a CPU</td></tr>
+            <tr><td><strong>Parakeet (English)</strong></td><td>English</td><td>NVIDIA Parakeet TDT 0.6B v3</td><td>~670 MB</td><td>about 1 s per phrase</td></tr>
+            <tr><td><strong>GigaAM (Russian)</strong></td><td>Russian</td><td>GigaAM v3 CTC, punctuation included</td><td>~225 MB</td><td>about 0.3 s per phrase</td></tr>
+          </tbody>
+        </table>
+        <p>Auto keeps the three offline models loaded, so changing language costs no model load time.
+          <code>AVA-Setup.exe</code> installs Nemotron during setup; Auto downloads the Persian, English and Russian
+          models on first use (~1.3 GB including the language detector), and the portable zip fetches whichever model
+          you pick. After that AVA works offline.</p>
+
+        <h4>How it works</h4>
+<pre>C# AVA.exe (WinForms)  &lt;── NDJSON over 127.0.0.1 ──&gt;  bridge/server.py
+orb · menu · typing       hello / load / start / stop      torch / sherpa-onnx
+                          status / partial / final / level           │
+                                                            microphone (16 kHz)</pre>
+        <p>The C# side owns the interface and the text insertion. The Python side owns the model, the microphone and
+          the segmentation; it streams <code>partial</code>/<code>final</code> hypotheses back over a loopback socket.</p>
+
+        <h4>Requirements</h4>
+        <table>
+          <tbody>
+            <tr><th scope="row">OS</th><td>Windows 10 / 11, x64</td></tr>
+            <tr><th scope="row">Runtime</th><td>none &mdash; the download carries .NET and its own Python</td></tr>
+            <tr><th scope="row">Python</th><td>only to build from source (3.11+, 3.13 verified)</td></tr>
+            <tr><th scope="row">Disk</th><td>~6.5 GB with Auto (three languages and the detector); Nemotron adds another 2.5 GB</td></tr>
+            <tr><th scope="row">Hardware</th><td>any x64 CPU; GPU optional</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Download</h4>
+        <p>Grab <strong><code>AVA-Setup.exe</code></strong> above and run it: it unpacks AVA to
+          <code>%LOCALAPPDATA%\AVA</code> with a progress bar, downloads the accurate Nemotron model so both engines are
+          ready, and starts the app. The model download (2.5 GB) can be skipped and happens on first use instead. If you
+          prefer a portable copy, <strong><code>AVA-win64.zip</code></strong> works the same way &mdash; unzip it
+          anywhere and run <code>AVA.exe</code>. Nothing else has to be installed: both carry the .NET runtime, an
+          embeddable Python and the speech libraries.</p>
+        <p>The speech models are downloaded from Hugging Face when first needed. Auto fetches the Persian, English and
+          Russian models plus the language detector (~1.3 GB); the manual cards are 0.45 GB (fast), 2.5 GB (accurate),
+          670 MB (English 0.6B) and 225 MB (Russian). The setup keeps Nemotron in
+          <code>%LOCALAPPDATA%\AVA\models</code>, the portable copy uses the Hugging Face cache; the orb shows the
+          progress. After that AVA works offline.</p>
+        <p class="note"><strong>SmartScreen</strong> &mdash; the installer is not code-signed, so Windows may show
+          &ldquo;Windows protected your PC &mdash; Unknown publisher&rdquo;. Choose <strong>More info &rarr; Run
+          anyway</strong>. A trusted code-signing certificate is the only way to remove this warning for users.</p>
+
+        <h4>Other platforms</h4>
+        <p>The ports for the other systems live in the same repository:</p>
+        <table>
+          <thead>
+            <tr><th>Platform</th><th>Where</th><th>Build</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Linux</td><td><code>src/AVADesktop</code></td><td><code>scripts/build-linux.sh</code></td><td>working port &mdash; Avalonia UI + the same Python bridge</td></tr>
+            <tr><td>macOS</td><td><code>src/AVADesktop</code></td><td><code>scripts/build-mac.sh</code></td><td>working port &mdash; the same code as Linux</td></tr>
+            <tr><td>Android</td><td><code>android/</code></td><td><code>gradle assembleDebug</code></td><td>offline voice keyboard (IME), fast engine</td></tr>
+            <tr><td>iOS / iPadOS</td><td><code>ios/</code></td><td>XcodeGen project</td><td>in-app dictation, fast engine</td></tr>
+            <tr><td>HarmonyOS</td><td><code>harmonyos/</code></td><td>DevEco Studio 5</td><td>scaffold &mdash; native engine pending</td></tr>
+          </tbody>
+        </table>
+        <p>Architecture, protocol and per-platform notes: <code>docs/platforms.md</code>. GitHub Actions builds the
+          artifacts automatically on the tags <code>linux-v*</code>, <code>mac-v*</code>, <code>android-v*</code> and
+          <code>ios-v*</code>.</p>
+
+        <details>
+          <summary>Usage</summary>
+          <table>
+            <thead>
+              <tr><th>Action</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Left click</strong></td><td>start dictating; click again to stop</td></tr>
+              <tr><td><strong>Right click</strong></td><td>open the radial menu: AUTO, MODELS, QUIT, SETTINGS, HOME</td></tr>
+              <tr><td><strong>Hotkey</strong></td><td><code>Alt</code> on its own; click the pill in Settings to pick another key</td></tr>
+              <tr><td><strong>Drag</strong></td><td>move the orb; it snaps to the screen edge</td></tr>
+            </tbody>
+          </table>
+          <p>The window behind <strong>HOME</strong>, <strong>HISTORY</strong>, <strong>SETTINGS</strong> and
+            <strong>ABOUT</strong> has four pages: the dashboard (words, dictations, streak, time, WPM, current setup,
+            recent dictations), the history (search, copy, delete, clear all, grouped by day), the settings (launch at
+            startup, update check, feedback, hotkey, activation mode, speech model) and the about page (credits, model
+            licences, privacy). The toolbar has minimise and maximise next to close.</p>
+          <p><strong>Activation mode</strong> decides what the orb and the hotkey do: <em>Tap</em> toggles recording,
+            <em>Hold</em> records only while you press, <em>Both</em> accepts either. A quick tap on the hotkey still
+            toggles in <em>Both</em>.</p>
+          <p>Switching engines happens on demand: the bridge loads the chosen model and drops the other one, because they
+            do not fit in RAM together. <em>Auto</em> starts in about 7 s once its models are cached and keeps Persian,
+            English and Russian ready; <em>Fast</em> starts in about 3 s, <em>Accurate</em> in 15&ndash;45 s, and the
+            English / Russian cards in a few seconds. In Auto each phrase is identified and decoded by the matching model
+            after a short pause; language ID and decoding together take about 0.2&ndash;0.4 s, and text reaches the
+            focused app roughly 0.6 s after you stop speaking. During continuous speech Auto types in chunks every 7
+            seconds.</p>
+          <p>Text is typed as each phrase is closed by the model &mdash; in Auto after about 0.6 s of silence or every
+            7 s of continuous speech, and in the manual engines after their own pause. It goes straight into the focused
+            app or website; if AVA's settings window happens to be focused, AVA returns to the last external app first.
+            Windows blocks synthetic typing into elevated (admin) apps; AVA copies the text and tells you so. Every
+            finished run is added to the dashboard and history.</p>
+        </details>
+
+        <details>
+          <summary>Troubleshooting</summary>
+          <table>
+            <thead>
+              <tr><th>Symptom</th><th>Cause / fix</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Orb stays amber</td><td>Model still loading, or the engine failed &mdash; see <code>%APPDATA%\AVA\bridge.log</code></td></tr>
+              <tr><td>Nothing is typed</td><td>The target window runs elevated; Windows blocks input from a non-elevated process. The text is copied and AVA shows a note. Run AVA as administrator to type there</td></tr>
+              <tr><td>Hotkey does nothing</td><td>Another app already owns that key &mdash; pick another one in Settings</td></tr>
+              <tr><td><code>bridge/server.py not found</code></td><td>Run <code>scripts\setup.bat</code> from the repository root</td></tr>
+              <tr><td>Wrong microphone</td><td><code>bridge.log</code> lists the device; set the default input in Windows</td></tr>
+            </tbody>
+          </table>
+          <p>Logs, settings and history live in <code>%APPDATA%\AVA\</code> (<code>ava.log</code>,
+            <code>bridge.log</code>, <code>settings.json</code>, <code>history.json</code>).</p>
+        </details>
+
+        <details>
+          <summary>Changelog</summary>
+          <h5>1.3.1 &mdash; 2026-11-01</h5>
+          <ul>
+            <li><strong>Orb update icon</strong> &mdash; when a newer build is on this site, the whole orb flips
+              vertically from the equalizer into a centered download mark with a rotating ring. Clicking it opens the
+              update page and restores the normal orb; if the update is still pending, the download face returns on the
+              next launch.</li>
+            <li><strong>Website update check</strong> &mdash; AVA reads the public release feed behind this site at
+              startup and hourly instead of the private repository. The Settings update check uses the same source.</li>
+          </ul>
+
+          <h5>1.3.0 &mdash; 2026-10-31</h5>
+          <ul>
+            <li><strong>Automatic language detection</strong> &mdash; the new default <em>Auto</em> card detects
+              Persian, English or Russian on every phrase and routes it to the matching offline model. The detector is
+              Whisper base, used only for language ID and never for transcription; English and Russian labels are
+              trusted and anything else maps to Persian. No more switching models by hand.</li>
+            <li><strong>Fast Auto</strong> &mdash; native sherpa-onnx language ID replaces the PyTorch detector, cutting
+              Auto startup from ~16 s to ~7 s and lowering memory. The English auto model is Parakeet 110M (~0.1 s per
+              phrase); the manual English card keeps the larger 0.6B model for maximum accuracy.</li>
+            <li><strong>English and Russian, for real</strong> &mdash; the small multilingual Whisper base was weak in
+              both languages. It is replaced by two dedicated models: NVIDIA <strong>Parakeet TDT 0.6B v3</strong> for
+              English (~670 MB) and <strong>GigaAM v3</strong> for Russian (~225 MB, punctuation included). Both run on
+              sherpa-onnx, offline, with no PyTorch and no API key; a phrase transcribes in about 0.2&ndash;1 s.</li>
+            <li><strong>Five model cards</strong> &mdash; Settings &rarr; Speech model shows <em>Auto
+              (recommended)</em>, <em>Koochik (fast)</em>, <em>Nemotron (accurate)</em>, <em>Parakeet (English)</em> and
+              <em>GigaAM (Russian)</em>, each with its language, size and download state.</li>
+            <li><strong>Menu matches the workflow</strong> &mdash; the radial menu now offers <strong>AUTO</strong> and
+              <strong>MODELS</strong> instead of FAST / ACCURATE.</li>
+            <li><strong>Typing follows your app</strong> &mdash; recognised text still goes to the focused app or
+              website. If AVA's settings window is focused, AVA returns to the last external app before typing. When
+              Windows blocks typing into an elevated app, the text is copied and AVA explains what happened.</li>
+          </ul>
+
+          <h5>1.2.0 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>English and Russian, automatically</strong> &mdash; a third engine, Whisper base, detects the
+              language on device and transcribes English, Russian or Persian without changing a setting. It downloads
+              once (~150 MB) when you first pick it; the Persian models stay for maximum accuracy.</li>
+            <li><strong>Typing follows your app</strong> &mdash; including when Windows blocks typing into an elevated
+              app.</li>
+          </ul>
+
+          <h5>1.1.8 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>About page</strong> &mdash; a fourth tab after Settings: what AVA is, who built it, the
+              third-party model licences and the offline/privacy statement.</li>
+          </ul>
+
+          <h5>1.1.7 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>Centred menu brand</strong> &mdash; the <code>AVA</code> label in the radial menu now sits in the
+              middle.</li>
+            <li><strong>Transparent exe icon</strong> &mdash; app and setup icons rebuilt from the clean transparent logo.</li>
+          </ul>
+
+          <h5>1.1.6 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>Drag fixed</strong> &mdash; the orb follows the cursor exactly; the drag works in screen
+              coordinates and still snaps to screen edges.</li>
+          </ul>
+
+          <h5>1.1.5 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>PyTorch 2.13.0</strong> &mdash; closes four Dependabot advisories; both engines were re-tested.</li>
+            <li><strong>Bundled Python isolation</strong> &mdash; the bridge ignores globally installed Python packages
+              (<code>PYTHONNOUSERSITE=1</code>).</li>
+          </ul>
+
+          <h5>1.1.4 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>New logo everywhere</strong> &mdash; the mark is the exe, window and setup icon.</li>
+            <li><strong>Both models documented</strong> &mdash; Koochik (fast) and Nemotron (accurate) with sizes and speed.</li>
+          </ul>
+
+          <h5>1.1.3 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong>New app icon</strong> &mdash; the mint equalizer mark is the exe icon and the hero image.</li>
+            <li><strong>Both models ready after setup</strong> &mdash; the installer downloads the accurate Nemotron
+              model (2.5 GB) with a progress bar and a skip option.</li>
+            <li><strong>Installed model loads locally</strong> &mdash; the setup writes the model into
+              <code>%LOCALAPPDATA%\AVA\models\nemotron</code>.</li>
+            <li><strong>Corrected model size</strong> &mdash; the accurate model is 2.5 GB, not 1.2 GB.</li>
+          </ul>
+
+          <h5>1.1.2 &mdash; 2026-10-27</h5>
+          <ul>
+            <li><strong><code>Alt</code> is the default hotkey</strong> &mdash; one tap starts dictation, another stops
+              it. <code>Alt+Tab</code>, <code>Alt+F4</code> and AltGr are ignored.</li>
+            <li><strong>Alt can be captured in Settings</strong> &mdash; clicking the hotkey pill and pressing Alt now
+              records it.</li>
+            <li><strong>Dark scrollbars</strong> &mdash; the Settings page no longer shows a white strip.</li>
+            <li><strong><code>AVA-Setup.exe</code></strong> &mdash; a one-file installer that unpacks AVA to
+              <code>%LOCALAPPDATA%\AVA</code> and starts it; <code>AVA-win64.zip</code> remains for portable use.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Project layout</summary>
+<pre>src/AVA/            C# application
+  OrbForm.cs        layered per-pixel-alpha orb, tap/hold, drag and snap
+  RadialMenu.cs     five-action radial menu (AUTO, MODELS, HOME, SETTINGS, QUIT)
+  HomeWindow.cs     dashboard, history and settings window
+  Ui.cs             dark controls: pill, toggle, segment, card, transcript row
+  History.cs        transcriptions and stats, persisted as JSON
+  App.cs            state machine, bridge events, typing
+  BridgeProcess.cs  starts the bundled Python bridge, or the dev venv
+  Interop/          Win32: layered window, topmost, SendInput typing, hotkey
+src/AVADesktop/     Avalonia port of the same app for Linux and macOS
+src/bridge/         Python speech engine (NDJSON server)
+  engines/          auto language routing / transformers / sherpa-onnx CTC / mock
+  text/             Persian normalisation and punctuation
+android/            Android voice keyboard (IME) on sherpa-onnx
+ios/                iOS / iPadOS dictation app (XcodeGen)
+harmonyos/          HarmonyOS NEXT scaffold (DevEco Studio 5)
+scripts/            setup, run, build, cross-platform build scripts
+docs/               screenshots, platform notes (docs/platforms.md)</pre>
+        </details>
+
+        <h4>Privacy</h4>
+        <p>Audio is captured and recognised on this computer. Recognised text goes to the focused window, to the
+          clipboard, and nowhere else. The only outbound request is the model download from Hugging Face. Record only
+          speech you have the right to record.</p>
+
+        <h4>Credits</h4>
         <ul>
-          <li><strong>Nemotron ASR Streaming Farsi</strong> (Persian, accurate) &mdash;
+          <li><strong>Persian model</strong> &mdash;
             <a href="https://huggingface.co/mehdi-hf/nemotron-asr-streaming-farsi">mehdi-hf/nemotron-asr-streaming-farsi</a>,
-            a derivative of NVIDIA Nemotron &middot; OpenMDW License Agreement, v1.1</li>
-          <li><strong>Shenava-Koochik v1.0</strong> (Persian, fast CTC) &mdash; Apache License 2.0
-            (<a href="https://apache.org">apache.org</a>)</li>
-          <li><strong>NVIDIA Parakeet</strong> (English) &mdash;
-            <a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">parakeet-tdt-0.6b-v3</a> &middot; CC-BY-4.0
-            &middot; sherpa-onnx exports for the 110M and 0.6B models</li>
-          <li><strong>GigaAM v3</strong> (Russian) &mdash; <a href="https://huggingface.co/ai-sage/GigaAM-v3">ai-sage/GigaAM-v3</a>
-            &middot; MIT &middot; sherpa-onnx CTC export with punctuation</li>
-          <li><strong>OpenAI Whisper base</strong> (language detector only, never transcription) &mdash;
-            <a href="https://huggingface.co/openai/whisper-base">openai/whisper-base</a> &middot; MIT</li>
-          <li><strong>sherpa-onnx</strong> &mdash; <a href="https://github.com/k2-fsa/sherpa-onnx">k2-fsa/sherpa-onnx</a>
-            offline speech engine; bridge based on <a href="https://github.com/saboorsarem/PersianSTT">PersianSTT</a></li>
+            a derivative of NVIDIA Nemotron, under the OpenMDW 1.1 licence.</li>
+          <li><strong>English models</strong> &mdash;
+            <a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">NVIDIA Parakeet</a> (CC-BY-4.0): the
+            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-parakeet_tdt_ctc_110m-en-36000">110M CTC export</a>
+            for Auto and the
+            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8">0.6B v3 int8 export</a>
+            for the manual card.</li>
+          <li><strong>Russian model</strong> &mdash;
+            <a href="https://huggingface.co/ai-sage/GigaAM-v3">GigaAM v3</a> by Sber (MIT), run through the
+            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-nemo-ctc-punct-giga-am-v3-russian-2025-12-16">sherpa-onnx export</a>.</li>
+          <li><strong>Language detector</strong> &mdash;
+            <a href="https://huggingface.co/openai/whisper-base">OpenAI Whisper base</a> (MIT), run through the
+            <a href="https://huggingface.co/csukuangfj/sherpa-onnx-whisper-base">sherpa-onnx export</a>; it only chooses
+            the model and never produces dictation text.</li>
+          <li><strong>Speech engine</strong> &mdash; based on
+            <a href="https://github.com/saboorsarem/PersianSTT">PersianSTT</a>, with
+            <a href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> for the offline models.</li>
+          <li><strong>Floating-button interaction</strong> &mdash; inspired by DNotes.</li>
         </ul>
 
-        <p class="privacy-title">Privacy &amp; local processing</p>
-        <ul>
-          <li><strong>100% Offline.</strong> All audio processing and transcription are executed entirely on your local machine.</li>
-          <li><strong>Total Privacy.</strong> Your voice data and text are never transmitted to any cloud servers or third-party APIs.</li>
-          <li><strong>Volatile Memory.</strong> Audio chunks are processed in RAM and discarded immediately after typing.</li>
-          <li><strong>One network call.</strong> The only outbound request is the one-time model download from Hugging Face.</li>
-        </ul>
+        <h4>License</h4>
+        <p>Application code: MIT. Model weights keep their own licences (OpenMDW 1.1, CC-BY-4.0, MIT) and are
+          downloaded, not bundled.</p>
+
+        <p class="sign">AVA &mdash; Your Voice. Your Words.<br>Developed by DANISHYARSI</p>
       </div>
     </article>
   </section>
@@ -356,7 +627,6 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
     if (asset) {
       var mb = Math.round(asset.size / 1048576) + " MB";
       document.getElementById("dl").textContent = "Download installer · v" + ver + " · " + mb;
-      document.getElementById("sz").textContent = "Download · " + mb;
     }
   })
   .catch(function () {});

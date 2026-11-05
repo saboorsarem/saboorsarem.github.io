@@ -478,13 +478,13 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
   .then(function (rel) {
     var ver = rel.tag_name.replace(/^ava-/, "");
     var el = document.getElementById("ver");
-    el.textContent = "v" + ver;
+    el.textContent = ver;
     el.hidden = false;
-    document.getElementById("avaVer").textContent = "v" + ver;
+    document.getElementById("avaVer").textContent = ver;
     var asset = (rel.assets || []).filter(function (a) { return /Setup\.exe$/i.test(a.name); })[0];
     if (asset) {
       var mb = Math.round(asset.size / 1048576) + " MB";
-      document.getElementById("dl").textContent = "Download installer · v" + ver + " · " + mb;
+      document.getElementById("dl").textContent = "Download installer · " + ver + " · " + mb;
       var sz = document.getElementById("sz");
       if (sz) sz.textContent = "Download · " + mb;
     }
@@ -539,7 +539,11 @@ fetch("https://api.github.com/users/saboorsarem/events/public?per_page=30")
     evs.forEach(function (e) {
       if (rows >= 16) return;
       var txt = "";
-      if (e.type === "PushEvent") txt = "pushed <b>" + e.payload.size + " commit" + (e.payload.size === 1 ? "" : "s") + "</b> · " + shortRepo(e.repo.name);
+      if (e.type === "PushEvent") {
+        var n = (e.payload && e.payload.size) ||
+                (e.payload && e.payload.commits && e.payload.commits.length) || 1;
+        txt = "pushed <b>" + n + " commit" + (n === 1 ? "" : "s") + "</b> · " + shortRepo(e.repo.name);
+      }
       else if (e.type === "ReleaseEvent") txt = "released <b>" + e.payload.release.tag_name + "</b> · " + shortRepo(e.repo.name);
       else if (e.type === "CreateEvent") txt = "created " + e.payload.ref_type + " <b>" + (e.payload.ref || "") + "</b> · " + shortRepo(e.repo.name);
       else if (e.type === "WatchEvent") txt = "starred <b>" + shortRepo(e.repo.name) + "</b>";

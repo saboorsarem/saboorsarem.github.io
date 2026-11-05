@@ -5,210 +5,299 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saboor Sarem — Software Engineer</title>
 <meta name="description" content="Software engineer. Native Windows apps in C# / .NET, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
-<meta name="theme-color" content="#05070a">
+<meta name="theme-color" content="#08080d">
 <meta property="og:title" content="Saboor Sarem — Software Engineer">
-<meta property="og:description" content="Software engineer. Native Windows apps, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
+<meta property="og:description" content="Native Windows apps, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
 <meta property="og:image" content="https://saboorsarem.github.io/avatar.png">
 <link rel="icon" type="image/png" sizes="180x180" href="logo.png">
 <link rel="apple-touch-icon" href="avatar.png">
 <style>
   :root {
-    --bg: #05070a;
-    --panel: rgba(10, 14, 18, .72);
-    --fg: #d7e2ea;
-    --muted: #8b98a6;
-    --neon: #00ff9c;
-    --pink: #ff2e88;
-    --cyan: #00e5ff;
-    --line: rgba(0, 255, 156, .22);
+    --bg: #08080d;
+    --panel: #111117;
+    --panel2: #16161d;
+    --fg: #e8e8ee;
+    --muted: #8f8f9c;
+    --line: #26262e;
+    --green: #22c55e;
+    --green-soft: rgba(34, 197, 94, .14);
+    --teal: #14b8a6;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --orange: #f97316;
+    --magenta: #d946ef;
+    --yellow: #eab308;
+    --red: #ef4444;
     --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background:
-      radial-gradient(900px 500px at 15% -10%, rgba(0, 229, 255, .10), transparent 60%),
-      radial-gradient(800px 500px at 90% 0%, rgba(255, 46, 136, .10), transparent 55%),
-      var(--bg);
+    background: radial-gradient(1100px 700px at 50% -10%, #101018, var(--bg) 62%);
     color: var(--fg);
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font: 14px/1.6 var(--sans);
     -webkit-font-smoothing: antialiased;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0, 255, 156, .045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 156, .045) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: radial-gradient(circle at 50% 20%, #000 20%, transparent 80%);
-    pointer-events: none;
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(180deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
-    pointer-events: none;
-    opacity: .5;
-  }
-  main { position: relative; max-width: 880px; margin: 0 auto; padding: 88px 24px 64px; }
   a { color: var(--fg); text-decoration: none; }
-  a:hover, a:focus-visible { color: var(--neon); }
-  :focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+  a:hover, a:focus-visible { color: #fff; }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
-  .kicker { font-family: var(--mono); font-size: .78rem; letter-spacing: .18em;
-            text-transform: uppercase; color: var(--neon); margin: 0 0 14px; }
-
-  h1 { font-family: var(--mono); font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.1;
-       letter-spacing: -.01em; margin: 0 0 10px; position: relative; display: inline-block; }
-  h1::before, h1::after {
-    content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
+  /* ── top toolbar ─────────────────────────────────────────── */
+  .bar {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    background: rgba(8, 8, 13, .82);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
   }
-  h1::before { color: var(--pink); transform: translate(2px, 0); clip-path: inset(0 0 62% 0); animation: glitch 5s infinite steps(1); }
-  h1::after  { color: var(--cyan); transform: translate(-2px, 0); clip-path: inset(58% 0 0 0); animation: glitch 5s infinite steps(1) reverse; }
-  @keyframes glitch {
-    0%, 92%, 100% { opacity: 0; }
-    93% { opacity: .9; transform: translate(3px, -1px); clip-path: inset(10% 0 70% 0); }
-    95% { opacity: .8; transform: translate(-3px, 1px); clip-path: inset(60% 0 18% 0); }
-    97% { opacity: .7; transform: translate(1px, 0); clip-path: inset(30% 0 45% 0); }
+  .brand { font-weight: 700; font-size: .95rem; letter-spacing: .01em; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .06em;
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+    color: var(--muted); background: var(--panel);
   }
+  .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+  .pill-live { color: #4ade80; border-color: rgba(34, 197, 94, .45); background: var(--green-soft); }
+  .pill-live .dot { background: var(--green); box-shadow: 0 0 8px rgba(34, 197, 94, .9); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .45; } }
+  .bar-right { margin-left: auto; display: flex; gap: 6px; }
+  .bar-right a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--panel); color: var(--muted);
+  }
+  .bar-right a:hover { color: #fff; border-color: #3a3a44; }
+  .bar-right svg { width: 15px; height: 15px; fill: currentColor; }
 
-  .role { font-family: var(--mono); color: var(--neon); margin: 0 0 20px; }
-  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
-
-  h2 { font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .16em;
-       color: var(--muted); font-weight: 500; margin: 64px 0 18px;
-       display: flex; align-items: center; gap: 12px; }
-  h2::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, var(--line), transparent); }
-  h2 span { color: var(--pink); }
-
-  #ava { margin-top: 52px; }
-  .feature {
-    border: 1px solid var(--line);
+  /* ── layout ──────────────────────────────────────────────── */
+  .layout {
+    display: grid; grid-template-columns: 236px minmax(0, 1fr) 300px;
+    gap: 14px; max-width: 1380px; margin: 0 auto; padding: 16px;
+    align-items: start;
+  }
+  .panel {
     background: var(--panel);
-    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .side, .feed-wrap { position: sticky; top: 62px; display: grid; gap: 14px; }
+  .panel h5 {
+    margin: 0; padding: 12px 14px 8px;
+    font: 600 .72rem/1 var(--sans); letter-spacing: .04em; color: var(--fg);
+  }
+  .panel h5 span { color: var(--muted); font-weight: 400; }
+
+  /* sidebar systems list */
+  .agents { list-style: none; margin: 0; padding: 4px 6px 8px; }
+  .agents li {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 8px; font-size: .84rem;
+  }
+  .agents li:hover { background: var(--panel2); }
+  .agents .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+  .agents .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .agents a:hover { color: #fff; }
+  .agents .ct { margin-left: auto; font-family: var(--mono); font-size: .72rem; color: var(--muted); white-space: nowrap; }
+  .agents .ct b { color: var(--fg); font-weight: 600; }
+
+  .stgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-radius: 0 0 10px 10px; overflow: hidden; }
+  .stat { background: var(--panel); padding: 10px 12px; }
+  .stat b { display: block; font-family: var(--mono); font-size: 1.05rem; color: #fff; }
+  .stat span { font-size: .7rem; color: var(--muted); }
+
+  .legend { list-style: none; margin: 0; padding: 4px 6px 10px; }
+  .legend li { display: flex; align-items: center; gap: 8px; padding: 5px 8px; font-size: .8rem; color: var(--muted); }
+  .legend .dot { width: 8px; height: 8px; border-radius: 2px; flex: 0 0 auto; }
+
+  /* live feed */
+  .feed { list-style: none; margin: 0; padding: 4px 8px 10px; max-height: calc(100vh - 130px); overflow-y: auto; }
+  .feed li { display: flex; align-items: baseline; gap: 8px; padding: 5px 6px; border-radius: 6px; font-size: .78rem; color: var(--muted); }
+  .feed li:hover { background: var(--panel2); }
+  .feed .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; align-self: center; }
+  .feed .t { font-family: var(--mono); font-size: .68rem; color: #6d6d7a; flex: 0 0 auto; }
+  .feed .x { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .feed .x b { color: var(--fg); font-weight: 600; }
+  .feed .empty { color: #6d6d7a; font-style: italic; }
+
+  /* ── main column ─────────────────────────────────────────── */
+  main { min-width: 0; display: grid; gap: 14px; }
+  .lede { color: var(--muted); margin: 0 0 4px; max-width: 70ch; }
+
+  .cell {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
     position: relative;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 18px 40px -28px rgba(0, 255, 156, .55);
+    overflow: hidden;
   }
-  .feature::before, .feature::after {
-    content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid var(--neon);
+  .cell::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--ac, var(--green)); opacity: .85; }
+  .cell-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .cell h3 { font-size: 1.35rem; margin: 0; letter-spacing: .01em; color: #fff; }
+  .ver { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--ac, var(--green));
+         border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; background: var(--panel2); }
+  .cell p { color: var(--muted); margin: 0 0 14px; max-width: 70ch; }
+  .cell p.lead { color: var(--fg); font-size: .98rem; }
+
+  .demo { display: block; width: 100%; height: auto; margin: 14px 0 4px; border: 1px solid var(--line); border-radius: 10px; background: #000; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 12px 0 0; }
+  .chips li { font-family: var(--mono); font-size: .68rem; letter-spacing: .05em;
+              color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; background: var(--panel2); }
+
+  .dl { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 18px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: .8rem; font-weight: 700; letter-spacing: .04em;
+    color: #06130b; background: var(--green);
+    border: 1px solid var(--green); border-radius: 9px; padding: 11px 18px;
+    transition: filter .15s, transform .15s;
   }
-  .feature::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-  .feature::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
-  .feature-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-  .feature h3 { font-family: var(--mono); font-size: 1.5rem; margin: 0; letter-spacing: .04em; color: #fff; }
-  .feature p { color: var(--muted); margin: 0 0 16px; max-width: 66ch; }
+  .btn:hover, .btn:focus-visible { filter: brightness(1.12); color: #06130b; transform: translateY(-1px); }
+  .ghost { font-family: var(--mono); font-size: .78rem; color: var(--muted); border-bottom: 1px solid var(--line); }
+  .ghost:hover { color: #fff; border-color: #3a3a44; }
 
-  .dl { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 22px; }
-  .btn { display: inline-block; font-family: var(--mono); font-size: .82rem; letter-spacing: .1em;
-         text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon);
-         background: rgba(0, 255, 156, .08); padding: 11px 18px; transition: background .2s, color .2s, box-shadow .2s; }
-  .btn:hover, .btn:focus-visible { background: var(--neon); color: #05070a; box-shadow: 0 0 24px rgba(0, 255, 156, .45); }
-  .ghost { font-family: var(--mono); font-size: .8rem; color: var(--muted); border-bottom: 1px solid var(--line); }
-  .ghost:hover { color: var(--neon); border-color: var(--neon); }
-
-  .platforms { list-style: none; padding: 0; margin: 20px 0 0; display: grid;
-               grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+  .platforms { list-style: none; padding: 0; margin: 18px 0 0; display: grid;
+               grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
   .platforms li { display: flex; align-items: center; gap: 9px; border: 1px solid var(--line);
-                  background: rgba(5, 7, 10, .55); padding: 9px 12px;
-                  font-family: var(--mono); font-size: .78rem; color: var(--muted); }
-  .platforms li.ready { border-color: var(--neon); background: rgba(0, 255, 156, .07); padding: 0; }
-  .platforms li.ready a { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 12px; }
+                  border-radius: 9px; background: var(--panel2); padding: 9px 12px;
+                  font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+  .platforms li.ready { border-color: rgba(34, 197, 94, .5); background: var(--green-soft); padding: 0; }
+  .platforms li.ready a { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 12px; border-radius: 9px; }
   .platforms svg { width: 15px; height: 15px; fill: currentColor; flex: 0 0 auto; opacity: .9; }
   .platforms .name { color: var(--fg); }
-  .platforms .state { margin-left: auto; font-size: .66rem; letter-spacing: .07em;
+  .platforms .state { margin-left: auto; font-size: .62rem; letter-spacing: .05em;
                       text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-  .platforms li.ready .name, .platforms li.ready .state { color: var(--neon); }
+  .platforms li.ready .name, .platforms li.ready .state { color: #4ade80; }
 
-  .ver { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--neon);
-         border: 1px solid var(--line); padding: 2px 8px; }
+  .doc { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .doc h4 { font: 600 .72rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase;
+            color: var(--muted); margin: 22px 0 10px; }
+  .doc h4:first-child { margin-top: 0; }
+  .doc p { margin: 0 0 12px; font-size: .88rem; color: var(--muted); line-height: 1.65; }
+  .doc ul { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 8px; font-size: .88rem; color: var(--muted); }
+  .doc li { line-height: 1.55; }
+  .doc strong { color: var(--fg); font-weight: 600; }
+  .doc code { font-family: var(--mono); font-size: .84em; color: #7dd3fc; }
+  .doc a { color: var(--fg); border-bottom: 1px solid var(--line); }
+  .doc a:hover { color: #fff; border-color: #3a3a44; }
+  .doc table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: .82rem; }
+  .doc th, .doc td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
+                     vertical-align: top; color: var(--muted); }
+  .doc thead th { font-family: var(--mono); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase;
+                  color: var(--muted); }
+  .doc p.sign { margin: 22px 0 0; font-family: var(--mono); font-size: .76rem; color: #4ade80; }
 
-  .demo { display: block; width: 100%; height: auto; margin: 18px 0; border: 1px solid var(--line); background: #000; }
+  section h2 { font: 600 .74rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase;
+               color: var(--muted); margin: 10px 0 0; display: flex; align-items: center; gap: 10px; }
+  section h2::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+  section h2 span { color: #6d6d7a; }
 
-  #stats { position: fixed; left: 14px; bottom: 14px; z-index: 10;
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;
+          list-style: none; padding: 0; margin: 14px 0 0; }
+  .grid li { --ac: var(--blue); border: 1px solid var(--line); border-top: 2px solid var(--ac);
+             background: var(--panel); border-radius: 10px; padding: 16px 18px;
+             transition: border-color .15s, transform .15s; }
+  .grid li:hover { border-color: var(--ac); transform: translateY(-2px); }
+  .grid .ttl { display: flex; align-items: center; gap: 8px; }
+  .grid .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ac); }
+  .grid a { font-weight: 650; font-size: .95rem; }
+  .grid a::after { content: " ↗"; color: var(--muted); font-size: .85em; }
+  .grid p { color: var(--muted); font-size: .84rem; margin: 6px 0 0; }
+  .grid p.tech { font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; color: #6d6d7a; margin-top: 10px; }
+
+  .links { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px;
+           font-family: var(--mono); font-size: .78rem; }
+  .links a { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; background: var(--panel2); color: var(--muted); }
+  .links a:hover { color: #fff; border-color: #3a3a44; }
+
+  footer { font-family: var(--mono); font-size: .72rem; color: #6d6d7a; padding: 4px 2px 8px; }
+
+  /* private ?stats panel */
+  #stats { position: fixed; left: 14px; bottom: 14px; z-index: 30;
            max-width: min(480px, calc(100vw - 28px));
            font-family: var(--mono); font-size: .72rem; line-height: 1.7; color: var(--muted);
-           background: rgba(5, 7, 10, .94); border: 1px solid var(--line); padding: 10px 14px;
-           box-shadow: 0 8px 30px rgba(0, 0, 0, .5); }
-  #stats b { color: var(--neon); font-weight: 600; letter-spacing: .08em; }
+           background: rgba(10, 10, 15, .96); border: 1px solid var(--line); border-radius: 10px;
+           padding: 10px 14px; box-shadow: 0 8px 30px rgba(0, 0, 0, .5); }
+  #stats b { color: #4ade80; font-weight: 700; letter-spacing: .06em; }
   #stats .row { display: flex; justify-content: space-between; gap: 16px; }
   #stats .row span:last-child { color: var(--fg); }
 
-  .lead { font-size: 1rem; color: var(--fg); }
-
-  .doc { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .04);
-         padding: 18px 20px; }
-  .doc h4 { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-            color: var(--neon); margin: 26px 0 12px; }
-  .doc h4:first-child { margin-top: 0; }
-  .doc p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); line-height: 1.6; }
-  .doc ul { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 9px;
-            font-size: .9rem; color: var(--muted); }
-  .doc li { line-height: 1.55; }
-  .doc strong { color: var(--fg); font-weight: 600; }
-  .doc code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
-  .doc a { color: var(--fg); border-bottom: 1px solid var(--line); }
-  .doc a:hover { color: var(--neon); border-color: var(--neon); }
-  .doc table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: .84rem; }
-  .doc th, .doc td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
-                     vertical-align: top; color: var(--muted); }
-  .doc thead th { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
-                  color: var(--neon); }
-  .doc p.sign { margin: 22px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--neon); }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-  .stack { margin-top: 22px; }
-  .chips li { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-              color: var(--cyan); border: 1px solid rgba(0, 229, 255, .3); padding: 3px 9px; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;
-          list-style: none; padding: 0; margin: 0; }
-  .grid li { border: 1px solid var(--line); background: var(--panel); padding: 18px 20px; transition: border-color .2s, transform .2s; }
-  .grid li:hover { border-color: var(--neon); transform: translateY(-2px); }
-  .grid a { font-family: var(--mono); font-size: 1.02rem; font-weight: 600; }
-  .grid a::after { content: " ↗"; color: var(--neon); font-size: .85em; }
-  .grid p { color: var(--muted); font-size: .92rem; margin: 6px 0 0; }
-  .grid p.tech { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-                 color: var(--cyan); margin-top: 12px; }
-
-  .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; font-family: var(--mono); font-size: .9rem; }
-  .links a { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-  .links a:hover { border-color: var(--neon); }
-
-  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line);
-           font-family: var(--mono); font-size: .78rem; color: var(--muted); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    h1::before, h1::after, .grid li { animation: none; transition: none; }
-    h1::before, h1::after { opacity: 0; }
+  @media (max-width: 1120px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .side, .feed-wrap { position: static; }
+    .feed { max-height: 320px; }
+    .side { order: 3; }
+    .feed-wrap { order: 2; }
+    main { order: 1; }
+  }
+  @media (max-width: 640px) {
+    .cell { padding: 16px; }
+    .brand { font-size: .88rem; }
   }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1 data-text="Saboor Sarem">Saboor Sarem</h1>
-    <p class="role">Software Engineer</p>
-    <p class="lede">I design and ship software end to end: native Windows applications in C# / .NET,
-      Python tooling for local LLMs, and AVA &mdash; an offline speech-to-text app for Persian, English
-      and Russian that runs entirely on the user's machine.</p>
-    <ul class="chips stack">
-      <li>C#</li>
-      <li>.NET 8</li>
-      <li>WPF</li>
-      <li>WinForms</li>
-      <li>Python</li>
-      <li>Git</li>
-    </ul>
-  </header>
 
-  <section id="ava">
-    <article class="feature">
-      <div class="feature-head">
+<header class="bar">
+  <span class="brand">Saboor Sarem</span>
+  <span class="pill pill-live"><span class="dot"></span>LIVE</span>
+  <nav class="bar-right">
+    <a href="https://github.com/saboorsarem" title="GitHub" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+    </a>
+    <a href="https://x.com/Saboor_Sarem" title="X / Twitter" aria-label="X / Twitter">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://t.me/saboorsarem" title="Telegram" aria-label="Telegram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.04 15.51l-.38 5.34c.54 0 .78-.23 1.06-.51l2.55-2.44 5.28 3.87c.97.53 1.66.25 1.92-.9l3.48-16.3c.31-1.43-.52-1.99-1.46-1.64L1.2 10.9c-1.4.54-1.38 1.32-.24 1.67l5.2 1.62L18.02 6.7c.57-.38 1.09-.17.66.21z"/></svg>
+    </a>
+    <a href="mailto:saboorsaremdanishyar@gmail.com" title="Email" aria-label="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 7.2L4.4 6.4A1 1 0 0 0 4 7.2v.2l8 5.3 8-5.3v-.2a1 1 0 0 0-.4-.8L12 11.2zM4 9.6V18h16V9.6l-8 5.2-8-5.2z"/></svg>
+    </a>
+  </nav>
+</header>
+
+<div class="layout">
+
+  <aside class="side">
+    <div class="panel">
+      <h5>Systems <span>· public</span></h5>
+      <ul class="agents" id="agents">
+        <li>
+          <span class="dot" style="background:var(--green)"></span>
+          <span class="nm"><a href="#ava"><b>AVA</b></a></span>
+          <span class="ct" id="avaVer">live</span>
+        </li>
+        <li class="empty-row"><span class="ct" style="margin:0 auto">loading…</span></li>
+      </ul>
+      <div class="stgrid">
+        <div class="stat"><b id="st-repos">—</b><span>public repos</span></div>
+        <div class="stat"><b id="st-stars">—</b><span>stars</span></div>
+        <div class="stat"><b id="st-rel">—</b><span>releases</span></div>
+        <div class="stat"><b id="st-commits">—</b><span>pushes 6w</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h5>Toolchain</h5>
+      <ul class="legend">
+        <li><span class="dot" style="background:var(--green)"></span>C# · .NET 8</li>
+        <li><span class="dot" style="background:var(--orange)"></span>WPF · WinForms</li>
+        <li><span class="dot" style="background:var(--blue)"></span>Python</li>
+        <li><span class="dot" style="background:var(--purple)"></span>llama.cpp · GGUF</li>
+        <li><span class="dot" style="background:var(--teal)"></span>sherpa-onnx · ASR</li>
+        <li><span class="dot" style="background:var(--magenta)"></span>Git · Actions</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <section id="ava" class="cell" style="--ac: var(--green)">
+      <div class="cell-head">
         <h3>AVA</h3>
         <span class="ver" id="ver" hidden></span>
       </div>
@@ -324,51 +413,74 @@
 
         <p class="sign">AVA &mdash; Your Voice. Your Words.<br>Built &amp; Engineered by DANISHYARSI</p>
       </div>
-    </article>
-  </section>
+    </section>
 
-  <section id="projects">
-    <h2><span>01</span>Projects</h2>
-    <ul class="grid">
-      <li>
-        <a href="https://github.com/saboorsarem/Rat-Windows">Rat-Windows</a>
-        <p>Little Snitch-style outbound connection monitor and application firewall for Windows.</p>
-        <p class="tech">C# · WPF · .NET</p>
-      </li>
-      <li>
-        <a href="https://github.com/saboorsarem/modelfit">modelfit</a>
-        <p>Will this model run on your machine? Sizes weights and KV cache, picks a GGUF quant, prints the llama-server command.</p>
-        <p class="tech">Python · llama.cpp</p>
-      </li>
-      <li>
-        <a href="https://github.com/saboorsarem/laptop-bench">laptop-bench</a>
-        <p>Benchmark coding models on the hardware you own: pass@1, tok/s, TTFT and RAM on any OpenAI-compatible endpoint.</p>
-        <p class="tech">Python · local LLMs</p>
-      </li>
-    </ul>
-  </section>
+    <section id="projects">
+      <h2><span>01</span>Projects</h2>
+      <ul class="grid">
+        <li style="--ac: var(--blue)">
+          <span class="ttl"><span class="dot"></span><a href="https://github.com/saboorsarem/Rat-Windows">Rat-Windows</a></span>
+          <p>Little Snitch-style outbound connection monitor and application firewall for Windows.</p>
+          <p class="tech">C# · WPF · .NET</p>
+        </li>
+        <li style="--ac: var(--purple)">
+          <span class="ttl"><span class="dot"></span><a href="https://github.com/saboorsarem/modelfit">modelfit</a></span>
+          <p>Will this model run on your machine? Sizes weights and KV cache, picks a GGUF quant, prints the llama-server command.</p>
+          <p class="tech">Python · llama.cpp</p>
+        </li>
+        <li style="--ac: var(--orange)">
+          <span class="ttl"><span class="dot"></span><a href="https://github.com/saboorsarem/laptop-bench">laptop-bench</a></span>
+          <p>Benchmark coding models on the hardware you own: pass@1, tok/s, TTFT and RAM on any OpenAI-compatible endpoint.</p>
+          <p class="tech">Python · local LLMs</p>
+        </li>
+      </ul>
+    </section>
 
-  <section id="contact">
-    <h2><span>02</span>Contact</h2>
-    <ul class="links">
-      <li><a href="https://github.com/saboorsarem">GitHub</a></li>
-      <li><a href="https://x.com/Saboor_Sarem">X / Twitter</a></li>
-      <li><a href="https://t.me/saboorsarem">Telegram</a></li>
-      <li><a href="mailto:saboorsaremdanishyar@gmail.com">Email</a></li>
-    </ul>
-  </section>
+    <section id="contact" class="cell" style="--ac: var(--blue)">
+      <h2 style="margin:0"><span>02</span>Contact</h2>
+      <ul class="links">
+        <li><a href="https://github.com/saboorsarem">GitHub</a></li>
+        <li><a href="https://x.com/Saboor_Sarem">X / Twitter</a></li>
+        <li><a href="https://t.me/saboorsarem">Telegram</a></li>
+        <li><a href="mailto:saboorsaremdanishyar@gmail.com">Email</a></li>
+      </ul>
+    </section>
 
-  <footer>&copy; 2026 Saboor Sarem</footer>
-  <div id="stats" hidden></div>
-</main>
+    <footer>&copy; 2026 Saboor Sarem</footer>
+  </main>
+
+  <aside class="feed-wrap">
+    <div class="panel">
+      <h5>Live feed <span>· github</span></h5>
+      <ul class="feed" id="feed">
+        <li class="empty">connecting…</li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<div id="stats" hidden></div>
+
 <script>
+function ago(iso) {
+  var s = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (s < 60) return Math.max(1, Math.round(s)) + "s";
+  if (s < 3600) return Math.round(s / 60) + "m";
+  if (s < 86400) return Math.round(s / 3600) + "h";
+  return Math.round(s / 86400) + "d";
+}
+function shortRepo(r) { return (r || "").replace(/^saboorsarem\//, ""); }
+
+/* latest release: version pill + button size */
 fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/latest")
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(function (rel) {
-    var el = document.getElementById("ver");
     var ver = rel.tag_name.replace(/^ava-/, "");
-    el.textContent = ver;
+    var el = document.getElementById("ver");
+    el.textContent = "v" + ver;
     el.hidden = false;
+    document.getElementById("avaVer").textContent = "v" + ver;
     var asset = (rel.assets || []).filter(function (a) { return /Setup\.exe$/i.test(a.name); })[0];
     if (asset) {
       var mb = Math.round(asset.size / 1048576) + " MB";
@@ -379,6 +491,76 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
   })
   .catch(function () {});
 
+/* sidebar: public repos + stats */
+fetch("https://api.github.com/users/saboorsarem/repos?per_page=100&sort=pushed")
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (repos) {
+    var skip = { "saboorsarem": 1, "saboorsarem.github.io": 1 };
+    var own = repos.filter(function (r) { return !r.fork && !skip[r.name]; });
+    var colors = ["var(--blue)", "var(--purple)", "var(--orange)", "var(--teal)", "var(--magenta)", "var(--yellow)"];
+    var ul = document.getElementById("agents");
+    ul.querySelectorAll(".empty-row").forEach(function (n) { n.remove(); });
+    own.slice(0, 6).forEach(function (r, i) {
+      var li = document.createElement("li");
+      li.innerHTML = "<span class='dot' style='background:" + colors[i % colors.length] + "'></span>" +
+        "<span class='nm'><a href='" + r.html_url + "'>" + r.name + "</a></span>" +
+        "<span class='ct'><b>" + r.stargazers_count + "</b>★ · " + ago(r.pushed_at) + "</span>";
+      ul.appendChild(li);
+    });
+    document.getElementById("st-repos").textContent = own.length;
+    document.getElementById("st-stars").textContent =
+      own.reduce(function (s, r) { return s + r.stargazers_count; }, 0);
+    document.getElementById("st-commits").textContent =
+      own.filter(function (r) { return (Date.now() - new Date(r.pushed_at)) < 42 * 86400e3; }).length;
+  })
+  .catch(function () {
+    var ul = document.getElementById("agents");
+    var li = document.createElement("li");
+    li.innerHTML = "<span class='ct' style='margin:0 auto'>offline</span>";
+    ul.appendChild(li);
+  });
+
+/* releases count */
+fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases?per_page=100")
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (rels) { document.getElementById("st-rel").textContent = rels.length; })
+  .catch(function () {});
+
+/* live feed: public github events */
+var evColors = { PushEvent: "var(--green)", ReleaseEvent: "var(--magenta)", CreateEvent: "var(--blue)",
+                 WatchEvent: "var(--yellow)", IssuesEvent: "var(--orange)", IssueCommentEvent: "var(--orange)",
+                 PullRequestEvent: "var(--purple)", ForkEvent: "var(--teal)", DeleteEvent: "var(--red)" };
+fetch("https://api.github.com/users/saboorsarem/events/public?per_page=30")
+  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(function (evs) {
+    var ul = document.getElementById("feed");
+    ul.innerHTML = "";
+    var rows = 0;
+    evs.forEach(function (e) {
+      if (rows >= 16) return;
+      var txt = "";
+      if (e.type === "PushEvent") txt = "pushed <b>" + e.payload.size + " commit" + (e.payload.size === 1 ? "" : "s") + "</b> · " + shortRepo(e.repo.name);
+      else if (e.type === "ReleaseEvent") txt = "released <b>" + e.payload.release.tag_name + "</b> · " + shortRepo(e.repo.name);
+      else if (e.type === "CreateEvent") txt = "created " + e.payload.ref_type + " <b>" + (e.payload.ref || "") + "</b> · " + shortRepo(e.repo.name);
+      else if (e.type === "WatchEvent") txt = "starred <b>" + shortRepo(e.repo.name) + "</b>";
+      else if (e.type === "IssuesEvent") txt = e.payload.action + " issue <b>" + e.payload.issue.title + "</b> · " + shortRepo(e.repo.name);
+      else if (e.type === "PullRequestEvent") txt = e.payload.action + " PR · " + shortRepo(e.repo.name);
+      else if (e.type === "ForkEvent") txt = "forked <b>" + shortRepo(e.repo.name) + "</b>";
+      else return;
+      var li = document.createElement("li");
+      li.innerHTML = "<span class='t'>" + ago(e.created_at) + "</span>" +
+        "<span class='dot' style='background:" + (evColors[e.type] || "var(--muted)") + "'></span>" +
+        "<span class='x'>" + txt + "</span>";
+      ul.appendChild(li);
+      rows++;
+    });
+    if (!rows) ul.innerHTML = "<li class='empty'>no public events yet</li>";
+  })
+  .catch(function () {
+    document.getElementById("feed").innerHTML = "<li class='empty'>offline · retry later</li>";
+  });
+
+/* private download stats: only renders with ?stats in the URL */
 (function () {
   if (!new URLSearchParams(location.search).has("stats")) return;
   var el = document.getElementById("stats");
@@ -399,6 +581,12 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
     })
     .catch(function () { el.hidden = false; el.textContent = "AVA downloads: API error, try later"; });
 })();
+
+/* respect reduced motion: don't autoplay the demo video */
+if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  var v = document.querySelector("video.demo");
+  if (v) { v.removeAttribute("autoplay"); v.pause(); }
+}
 </script>
 </body>
 </html>

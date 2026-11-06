@@ -136,7 +136,6 @@
              color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; }
 
   .dl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-  .ver { font: 500 11px/1 "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--accent); }
 
   .models { width: 100%; border-collapse: collapse; margin-top: 34px; font-size: 14px; }
   .models th, .models td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -238,7 +237,6 @@
         </ul>
         <div class="dl">
           <a class="btn" id="dl" href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">Download installer &middot; 334 MB</a>
-          <span class="ver" id="ver" hidden></span>
         </div>
       </div>
 
@@ -369,7 +367,7 @@
 
 <footer class="wrap">
   <button class="btn" type="button" id="replay">Watch it again</button>
-  <button class="btn btn--ghost" type="button" id="toggle"></button>
+  <button class="btn btn--ghost" type="button" id="toggle">Turn build agents off</button>
   <span class="fine">&copy; 2026 Saboor Sarem &middot; AVA &mdash; Your Voice. Your Words. Built &amp; Engineered by DANISHYARSI.
     Build animation: <a href="https://github.com/harnoorDev/swarm-build">swarm-build</a> by Harnoor Singh (MIT).</span>
 </footer>
@@ -379,9 +377,6 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(function (rel) {
     var ver = rel.tag_name.replace(/^ava-/, "");
-    var el = document.getElementById("ver");
-    el.textContent = "v" + ver;
-    el.hidden = false;
     var asset = (rel.assets || []).filter(function (a) { return /Setup\.exe$/i.test(a.name); })[0];
     if (asset) {
       var mb = Math.round(asset.size / 1048576) + " MB";

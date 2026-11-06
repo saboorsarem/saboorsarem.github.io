@@ -5,233 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saboor Sarem — Software Engineer</title>
 <meta name="description" content="Software engineer. Native Windows apps in C# / .NET, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
-<meta name="theme-color" content="#05070a">
+<meta name="theme-color" content="#0b0b0a">
 <meta property="og:title" content="Saboor Sarem — Software Engineer">
-<meta property="og:description" content="Software engineer. Native Windows apps, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
+<meta property="og:description" content="Native Windows apps, Python tools for local LLMs, and AVA — offline speech-to-text in Persian, English and Russian.">
 <meta property="og:image" content="https://saboorsarem.github.io/avatar.png">
+<meta property="og:url" content="https://saboorsarem.github.io/">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="180x180" href="logo.png">
 <link rel="apple-touch-icon" href="avatar.png">
+
+<script>
+(function () {
+  try {
+    var d = document.documentElement, k = 'swarm-build';
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (localStorage.getItem(k + '-off') === '1') return;
+    d.classList.add('swarm-js');
+    setTimeout(function () { if (!window.__swarmBuild) d.classList.remove('swarm-js'); }, 6000);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/swarm-build.css">
 <style>
   :root {
-    --bg: #05070a;
-    --panel: rgba(10, 14, 18, .72);
-    --fg: #d7e2ea;
-    --muted: #8b98a6;
-    --neon: #00ff9c;
-    --pink: #ff2e88;
-    --cyan: #00e5ff;
-    --line: rgba(0, 255, 156, .22);
-    --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Consolas, monospace;
+    --bg: #0b0b0a;
+    --ink: #f3f1ea;
+    --ink-2: #c9c6bb;
+    --muted: #8a8779;
+    --line: rgba(243, 241, 234, .1);
+    --accent: #00e676;
+    --accent-ink: #04150c;
+    --sb-select: #00e676;
+    --sb-ok: #8dffb9;
+    --sb-glass: rgba(12, 14, 12, .78);
+    --sb-glass-ink: #f3f1ea;
+    --sb-glass-line: rgba(255, 255, 255, .14);
+    color-scheme: dark;
   }
+
   * { box-sizing: border-box; }
+
   html { scroll-behavior: smooth; }
+
   body {
     margin: 0;
-    background:
-      radial-gradient(900px 500px at 15% -10%, rgba(0, 229, 255, .10), transparent 60%),
-      radial-gradient(800px 500px at 90% 0%, rgba(255, 46, 136, .10), transparent 55%),
-      var(--bg);
-    color: var(--fg);
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(58% 46% at 78% 14%, rgba(0, 230, 118, .13), transparent 68%), var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0, 255, 156, .045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 156, .045) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: radial-gradient(circle at 50% 20%, #000 20%, transparent 80%);
-    pointer-events: none;
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(180deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
-    pointer-events: none;
-    opacity: .5;
-  }
-  main { position: relative; max-width: 880px; margin: 0 auto; padding: 88px 24px 64px; }
-  a { color: var(--fg); text-decoration: none; }
-  a:hover, a:focus-visible { color: var(--neon); }
-  :focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
 
-  .kicker { font-family: var(--mono); font-size: .78rem; letter-spacing: .18em;
-            text-transform: uppercase; color: var(--neon); margin: 0 0 14px; }
+  a { color: inherit; }
 
-  h1 { font-family: var(--mono); font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.1;
-       letter-spacing: -.01em; margin: 0 0 10px; position: relative; display: inline-block; }
-  h1::before, h1::after {
-    content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
-  }
-  h1::before { color: var(--pink); transform: translate(2px, 0); clip-path: inset(0 0 62% 0); animation: glitch 5s infinite steps(1); }
-  h1::after  { color: var(--cyan); transform: translate(-2px, 0); clip-path: inset(58% 0 0 0); animation: glitch 5s infinite steps(1) reverse; }
-  @keyframes glitch {
-    0%, 92%, 100% { opacity: 0; }
-    93% { opacity: .9; transform: translate(3px, -1px); clip-path: inset(10% 0 70% 0); }
-    95% { opacity: .8; transform: translate(-3px, 1px); clip-path: inset(60% 0 18% 0); }
-    97% { opacity: .7; transform: translate(1px, 0); clip-path: inset(30% 0 45% 0); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px); }
+
+  .mono {
+    font: 500 11px/1.4 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  .role { font-family: var(--mono); color: var(--neon); margin: 0 0 20px; }
-  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+  nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: center; padding: 18px; }
 
-  h2 { font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .16em;
-       color: var(--muted); font-weight: 500; margin: 64px 0 18px;
-       display: flex; align-items: center; gap: 12px; }
-  h2::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, var(--line), transparent); }
-  h2 span { color: var(--pink); }
-
-  #ava { margin-top: 52px; }
-  .feature {
-    border: 1px solid var(--line);
-    background: var(--panel);
-    padding: 24px;
-    position: relative;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 18px 40px -28px rgba(0, 255, 156, .55);
+  .pill {
+    display: flex; align-items: center; gap: 14px;
+    padding: 8px 8px 8px 16px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: rgba(16, 16, 14, .7);
+    backdrop-filter: blur(16px);
   }
-  .feature::before, .feature::after {
-    content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid var(--neon);
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(0, 230, 118, .7); }
+
+  .pill a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .pill .mono { color: var(--muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px;
+    background: var(--accent); color: var(--accent-ink);
+    font: 600 14px/1 Inter, sans-serif; text-decoration: none; cursor: pointer;
+    transition: transform .16s ease-out, box-shadow .16s ease-out;
   }
-  .feature::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-  .feature::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
-  .feature-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-  .feature h3 { font-family: var(--mono); font-size: 1.5rem; margin: 0; letter-spacing: .04em; color: #fff; }
-  .feature p { color: var(--muted); margin: 0 0 16px; max-width: 66ch; }
+  .btn:hover { box-shadow: 0 0 26px rgba(0, 230, 118, .35); }
+  .btn:active { transform: scale(.97); }
+  .btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn--ghost:hover { box-shadow: none; border-color: rgba(243, 241, 234, .3); }
 
-  .dl { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 22px; }
-  .btn { display: inline-block; font-family: var(--mono); font-size: .82rem; letter-spacing: .1em;
-         text-transform: uppercase; color: var(--neon); border: 1px solid var(--neon);
-         background: rgba(0, 255, 156, .08); padding: 11px 18px; transition: background .2s, color .2s, box-shadow .2s; }
-  .btn:hover, .btn:focus-visible { background: var(--neon); color: #05070a; box-shadow: 0 0 24px rgba(0, 255, 156, .45); }
-  .ghost { font-family: var(--mono); font-size: .8rem; color: var(--muted); border-bottom: 1px solid var(--line); }
-  .ghost:hover { color: var(--neon); border-color: var(--neon); }
+  header.hero { min-height: calc(100svh - 76px); display: grid; align-content: end; gap: 24px; padding-bottom: 64px; }
 
-  .platforms { list-style: none; padding: 0; margin: 20px 0 0; display: grid;
-               grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-  .platforms li { display: flex; align-items: center; gap: 9px; border: 1px solid var(--line);
-                  background: rgba(5, 7, 10, .55); padding: 9px 12px;
-                  font-family: var(--mono); font-size: .78rem; color: var(--muted); }
-  .platforms li.ready { border-color: var(--neon); background: rgba(0, 255, 156, .07); padding: 0; }
-  .platforms li.ready a { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 12px; }
+  .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+  .meta div { padding: 14px 16px 14px 0; display: grid; gap: 4px; }
+  .meta div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+  .meta b { font: 500 12px/1.4 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+
+  h1 { margin: 0; font: 400 clamp(46px, 9vw, 132px)/0.94 "Instrument Serif", serif; letter-spacing: -.02em; }
+  h1 em, h2 em { font-style: italic; color: var(--accent); }
+
+  .foot { display: grid; grid-template-columns: 7fr 5fr; gap: 32px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .foot p { margin: 0; color: var(--ink-2); max-width: 620px; }
+
+  .stats { display: flex; gap: 40px; margin-top: 20px; }
+  .stats strong { display: block; font: 400 clamp(48px, 6vw, 80px)/.9 "Instrument Serif", serif; }
+  .stats span { display: block; margin-top: 6px; }
+
+  .credit { display: flex; align-items: center; gap: 10px; }
+  .credit::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #8dffb9; box-shadow: 0 0 10px #8dffb9; }
+
+  section.wrap { padding-block: 14vh 4vh; }
+  h2 { margin: 12px 0 28px; font: 400 clamp(38px, 6vw, 82px)/.95 "Instrument Serif", serif; letter-spacing: -.02em; }
+  h3 { margin: 0 0 8px; font: 400 26px/1.1 "Instrument Serif", serif; }
+
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .card { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .02); transition: border-color .2s ease-out, background .2s ease-out; }
+  .card:hover { border-color: rgba(0, 230, 118, .45); background: rgba(0, 230, 118, .04); }
+  .card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .card .tags { margin-top: 14px; }
+
+  .ava { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .ava-media { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 14px; background: #000; display: block; }
+  .ava p { margin: 0 0 16px; color: var(--ink-2); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+  .tags li { font: 500 10.5px/1 "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase;
+             color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; }
+
+  .dl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .ver { font: 500 11px/1 "JetBrains Mono", monospace; letter-spacing: .1em; color: var(--accent); }
+
+  .models { width: 100%; border-collapse: collapse; margin-top: 34px; font-size: 14px; }
+  .models th, .models td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .models thead th { font: 500 10.5px/1.4 "JetBrains Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .models td { color: var(--ink-2); }
+  .models td:first-child { color: var(--ink); }
+
+  .platforms { list-style: none; padding: 0; margin: 26px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .platforms li { display: flex; align-items: center; gap: 9px; min-width: 0; border: 1px solid var(--line); border-radius: 10px;
+                  padding: 10px 12px; font: 500 11.5px/1 "JetBrains Mono", monospace; letter-spacing: .04em; }
+  .platforms li.ready { border-color: rgba(0, 230, 118, .5); background: rgba(0, 230, 118, .06); }
+  .platforms li.ready a { display: flex; align-items: center; gap: 9px; width: 100%; min-width: 0; text-decoration: none; color: var(--accent); }
   .platforms svg { width: 15px; height: 15px; fill: currentColor; flex: 0 0 auto; opacity: .9; }
-  .platforms .name { color: var(--fg); }
-  .platforms .state { margin-left: auto; font-size: .66rem; letter-spacing: .07em;
-                      text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-  .platforms li.ready .name, .platforms li.ready .state { color: var(--neon); }
+  .platforms .name { color: var(--ink-2); white-space: nowrap; }
+  .platforms .state { margin-left: auto; font-size: .62rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted);
+                      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .platforms li.ready .name, .platforms li.ready .state { color: var(--accent); }
 
-  .ver { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--neon);
-         border: 1px solid var(--line); padding: 2px 8px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .split ul { margin: 10px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 15px; }
+  .split li { margin-bottom: 8px; }
+  .split a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .split a:hover { border-color: var(--accent); color: var(--accent); }
+  .split code { font: 500 12px/1 "JetBrains Mono", monospace; color: var(--accent); }
 
-  .demo { display: block; width: 100%; height: auto; margin: 18px 0; border: 1px solid var(--line); background: #000; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 
-  #stats { position: fixed; left: 14px; bottom: 14px; z-index: 10;
-           max-width: min(480px, calc(100vw - 28px));
-           font-family: var(--mono); font-size: .72rem; line-height: 1.7; color: var(--muted);
-           background: rgba(5, 7, 10, .94); border: 1px solid var(--line); padding: 10px 14px;
-           box-shadow: 0 8px 30px rgba(0, 0, 0, .5); }
-  #stats b { color: var(--neon); font-weight: 600; letter-spacing: .08em; }
-  #stats .row { display: flex; justify-content: space-between; gap: 16px; }
-  #stats .row span:last-child { color: var(--fg); }
+  footer.wrap { padding-block: 8vh 10vh; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  footer .fine { flex-basis: 100%; font: 400 12px/1.6 "JetBrains Mono", monospace; color: var(--muted); margin-top: 18px; }
+  footer .fine a { color: var(--ink-2); }
 
-  .lead { font-size: 1rem; color: var(--fg); }
+  @media (max-width: 900px) {
+    .cards, .ava, .split { grid-template-columns: 1fr; }
+  }
 
-  .doc { margin-top: 24px; border-left: 2px solid var(--neon); background: rgba(0, 255, 156, .04);
-         padding: 18px 20px; }
-  .doc h4 { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-            color: var(--neon); margin: 26px 0 12px; }
-  .doc h4:first-child { margin-top: 0; }
-  .doc p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); line-height: 1.6; }
-  .doc ul { padding-left: 18px; margin: 0 0 14px; display: grid; gap: 9px;
-            font-size: .9rem; color: var(--muted); }
-  .doc li { line-height: 1.55; }
-  .doc strong { color: var(--fg); font-weight: 600; }
-  .doc code { font-family: var(--mono); font-size: .84em; color: var(--cyan); }
-  .doc a { color: var(--fg); border-bottom: 1px solid var(--line); }
-  .doc a:hover { color: var(--neon); border-color: var(--neon); }
-  .doc table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: .84rem; }
-  .doc th, .doc td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
-                     vertical-align: top; color: var(--muted); }
-  .doc thead th { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
-                  color: var(--neon); }
-  .doc p.sign { margin: 22px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--neon); }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-  .stack { margin-top: 22px; }
-  .chips li { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-              color: var(--cyan); border: 1px solid rgba(0, 229, 255, .3); padding: 3px 9px; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;
-          list-style: none; padding: 0; margin: 0; }
-  .grid li { border: 1px solid var(--line); background: var(--panel); padding: 18px 20px; transition: border-color .2s, transform .2s; }
-  .grid li:hover { border-color: var(--neon); transform: translateY(-2px); }
-  .grid a { font-family: var(--mono); font-size: 1.02rem; font-weight: 600; }
-  .grid a::after { content: " ↗"; color: var(--neon); font-size: .85em; }
-  .grid p { color: var(--muted); font-size: .92rem; margin: 6px 0 0; }
-  .grid p.tech { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-                 color: var(--cyan); margin-top: 12px; }
-
-  .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 18px; font-family: var(--mono); font-size: .9rem; }
-  .links a { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-  .links a:hover { border-color: var(--neon); }
-
-  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line);
-           font-family: var(--mono); font-size: .78rem; color: var(--muted); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    h1::before, h1::after, .grid li { animation: none; transition: none; }
-    h1::before, h1::after { opacity: 0; }
+  @media (max-width: 760px) {
+    .meta { grid-template-columns: 1fr; }
+    .meta div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .foot { grid-template-columns: 1fr; }
+    .pill .mono { display: none; }
+    section { padding-top: 10vh; }
+    .stats { gap: 28px; }
   }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1 data-text="Saboor Sarem">Saboor Sarem</h1>
-    <p class="role">Software Engineer</p>
-    <p class="lede">I design and ship software end to end: native Windows applications in C# / .NET,
-      Python tooling for local LLMs, and AVA &mdash; an offline speech-to-text app for Persian, English
-      and Russian that runs entirely on the user's machine.</p>
-    <ul class="chips stack">
-      <li>C#</li>
-      <li>.NET 8</li>
-      <li>WPF</li>
-      <li>WinForms</li>
-      <li>Python</li>
-      <li>Git</li>
-    </ul>
+
+<nav>
+  <div class="pill" data-swarm-step="frame" data-swarm-label="nav">
+    <span class="dot" data-swarm-origin></span>
+    <a href="#top">Saboor Sarem</a>
+    <span class="mono">Software Engineer</span>
+    <a class="btn" href="#ava">AVA&nbsp;&darr;</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap" data-swarm>
+    <div class="meta" data-swarm-step="frame" data-swarm-label="profile grid">
+      <div><span class="mono">// Based in</span><b data-swarm-step="fetch">Windows &middot; x64</b></div>
+      <div><span class="mono">// Status</span><b data-swarm-step="fetch">AVA shipping for Windows</b></div>
+      <div><span class="mono">// Focus</span><b data-swarm-step="fetch">Local-first AI tools</b></div>
+    </div>
+
+    <h1 data-swarm-step="type" data-swarm-attack="well>badly">Small tools that<br>do <em>one thing well</em>.</h1>
+
+    <div class="foot">
+      <p data-swarm-step="frame stream" data-swarm-label="bio">I am Saboor, a software engineer who ships native Windows apps in
+        C# / .NET and Python utilities for local LLMs. AVA is the main one: offline speech-to-text in Persian, English
+        and Russian, one floating orb, the words typed straight into whatever app you are in. No cloud, no API keys, no
+        audio leaving the machine.</p>
+      <div>
+        <a class="btn" href="#ava" data-swarm-step="frame" data-swarm-label="cta">Get AVA &rarr;</a>
+        <div class="stats">
+          <div data-swarm-step="count" data-swarm-label="languages"><strong>3</strong><span class="mono">// Languages in AVA</span></div>
+          <div data-swarm-step="count" data-swarm-label="projects"><strong>4</strong><span class="mono">// Shipped projects</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="credit mono" data-swarm-credit hidden>Built by {agents} agents while you watched &middot; one tried to rewrite the promise</p>
   </header>
 
-  <section id="ava">
-    <article class="feature">
-      <div class="feature-head">
-        <h3>AVA</h3>
-        <span class="ver" id="ver" hidden></span>
-      </div>
-      <p class="lead">Persian, English and Russian speech-to-text for Windows. One floating orb, nothing else:
-        tap it, speak, tap again &mdash; the text is already typed into whatever application you were writing in.</p>
+  <section class="wrap" id="ava" data-swarm>
+    <span class="mono" data-swarm-step="fetch">001 / AVA</span>
+    <h2 data-swarm-step="type">Persian, English and Russian,<br><em>offline</em>.</h2>
 
-      <video class="demo" src="AVA-intro.mp4" width="1920" height="1080"
-             autoplay muted loop playsinline controls
-             aria-label="AVA intro video — one floating orb, speech typed straight into any app"></video>
-
-      <ul class="chips">
-        <li>Persian</li>
-        <li>English</li>
-        <li>Russian</li>
-        <li>Auto language</li>
-        <li>Offline</li>
-      </ul>
-
-      <div class="dl">
-        <a class="btn" id="dl" href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">Download installer &middot; 334 MB</a>
+    <div class="ava">
+      <div data-swarm-step="frame" data-swarm-label="ava copy">
+        <p>AVA is a desktop dictation app for Persian (<code>fa-IR</code>), English and Russian. It sits on the desktop as a
+          single floating orb, records locally, recognises speech on your own computer and types the result straight into
+          the focused window. No audio leaves the machine.</p>
+        <ul class="tags">
+          <li>Persian</li>
+          <li>English</li>
+          <li>Russian</li>
+          <li>Auto language</li>
+          <li>Offline</li>
+        </ul>
+        <div class="dl">
+          <a class="btn" id="dl" href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">Download installer &middot; 334 MB</a>
+          <span class="ver" id="ver" hidden></span>
+        </div>
       </div>
 
-      <ul class="platforms">
+      <video class="ava-media" src="ava-intro.mp4" controls preload="metadata" playsinline
+             data-swarm-step="frame" data-swarm-label="demo video"></video>
+    </div>
+
+    <table class="models">
+      <thead>
+        <tr><th>Model</th><th>Language</th><th>Size</th><th>Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Koochik (fast)</td><td>Persian</td><td>~0.45 GB</td><td>about 5&times; faster than real time</td></tr>
+        <tr><td>Nemotron (accurate)</td><td>Persian</td><td>~2.5 GB</td><td>slower than real time on a CPU</td></tr>
+        <tr><td>Parakeet (English)</td><td>English</td><td>~670 MB</td><td>about 1 s per phrase</td></tr>
+        <tr><td>GigaAM (Russian)</td><td>Russian</td><td>~225 MB</td><td>about 0.3 s per phrase</td></tr>
+      </tbody>
+    </table>
+
+    <ul class="platforms">
         <li class="ready">
           <a href="https://github.com/saboorsarem/saboorsarem.github.io/releases/latest/download/AVA-Setup.exe">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.4 10.2 4.4v7.2H3zM11.2 4.2 21 2.8v8.8h-9.8zM3 12.7h7.2V19.9L3 18.8zM11.2 12.7H21v8.5l-9.8-1.4z"/></svg>
@@ -270,104 +297,90 @@
             <span class="state">Scaffold</span>
           </li>
       </ul>
-
-      <div class="doc">
-        <h4>What it is</h4>
-        <p>AVA is a desktop dictation app for Persian (<code>fa-IR</code>), English and Russian. It sits on the desktop
-          as a single floating orb, records locally, recognises speech on your own computer and types the result
-          straight into the focused window. No audio leaves the machine.</p>
-
-        <h4>Automatic language detection, four models</h4>
-        <p><strong>Auto</strong> is the default card: it identifies the language on every phrase on this PC and sends
-          the audio to the matching offline model.</p>
-        <table>
-          <thead>
-            <tr><th>Model</th><th>Language</th><th>Size</th><th>Speed</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Koochik (fast)</strong></td><td>Persian</td><td>~0.45 GB</td><td>about 5&times; faster than real time</td></tr>
-            <tr><td><strong>Nemotron (accurate)</strong></td><td>Persian</td><td>~2.5 GB</td><td>slower than real time on a CPU</td></tr>
-            <tr><td><strong>Parakeet (English)</strong></td><td>English</td><td>~670 MB</td><td>about 1 s per phrase</td></tr>
-            <tr><td><strong>GigaAM (Russian)</strong></td><td>Russian</td><td>~225 MB</td><td>about 0.3 s per phrase</td></tr>
-          </tbody>
-        </table>
-        <p>In Auto the English model is a smaller Parakeet 110M (~465 MB, ~0.1 s per phrase) and the detector itself is
-          Whisper base, used only to choose the language and never to transcribe. Models are downloaded once, on first
-          use, and cached locally; after that AVA works fully offline.</p>
-
-        <h4>Privacy &amp; local processing</h4>
-        <ul>
-          <li><strong>100% Offline.</strong> All audio processing and transcription are executed entirely on your local machine.</li>
-          <li><strong>Total Privacy.</strong> Your voice data and text are never transmitted to any cloud servers or third-party APIs.</li>
-          <li><strong>Volatile Memory.</strong> Audio chunks are processed in RAM and discarded immediately after typing.</li>
-          <li><strong>One network call.</strong> The only outbound request is the one-time model download from Hugging Face.</li>
-        </ul>
-
-        <h4>Third-party licenses</h4>
-        <p>AVA runs fully offline and incorporates the following open-weights models and libraries. Model weights are
-          downloaded on first use, not bundled, and keep their own licences. Application code is MIT.</p>
-        <ul>
-          <li><strong>Nemotron ASR Streaming Farsi</strong> (Persian, accurate) &mdash;
-            <a href="https://huggingface.co/mehdi-hf/nemotron-asr-streaming-farsi">mehdi-hf/nemotron-asr-streaming-farsi</a>
-            &middot; OpenMDW License Agreement, v1.1</li>
-          <li><strong>Shenava-Koochik v1.0</strong> (Persian, fast CTC) &mdash; Apache License 2.0
-            (<a href="https://apache.org">apache.org</a>)</li>
-          <li><strong>NVIDIA Parakeet</strong> (English) &mdash;
-            <a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">parakeet-tdt-0.6b-v3</a> &middot; CC-BY-4.0</li>
-          <li><strong>GigaAM v3</strong> (Russian) &mdash; <a href="https://huggingface.co/ai-sage/GigaAM-v3">ai-sage/GigaAM-v3</a>
-            &middot; MIT</li>
-          <li><strong>OpenAI Whisper base</strong> (language detector only) &mdash;
-            <a href="https://huggingface.co/openai/whisper-base">openai/whisper-base</a> &middot; MIT</li>
-          <li><strong>sherpa-onnx</strong> &mdash; <a href="https://github.com/k2-fsa/sherpa-onnx">k2-fsa/sherpa-onnx</a>
-            offline speech engine</li>
-        </ul>
-
-        <p class="sign">AVA &mdash; Your Voice. Your Words.<br>Built &amp; Engineered by DANISHYARSI</p>
-      </div>
-    </article>
   </section>
 
-  <section id="projects">
-    <h2><span>01</span>Projects</h2>
-    <ul class="grid">
-      <li>
-        <a href="https://github.com/saboorsarem/Rat-Windows">Rat-Windows</a>
+  <section class="wrap" data-swarm>
+    <span class="mono" data-swarm-step="fetch">002 / Work</span>
+    <h2 data-swarm-step="type">Shipped, small and<br><em>sharp</em>.</h2>
+
+    <div class="cards">
+      <article class="card" data-swarm-step="frame">
+        <h3>AVA</h3>
+        <p>Offline speech-to-text for Persian, English and Russian. One floating orb, text typed into the focused app.</p>
+        <ul class="tags"><li>C#</li><li>.NET 8</li><li>WinForms</li><li>Python</li></ul>
+      </article>
+      <article class="card" data-swarm-step="frame">
+        <h3><a href="https://github.com/saboorsarem/Rat-Windows" style="text-decoration:none">Rat-Windows</a></h3>
         <p>Little Snitch-style outbound connection monitor and application firewall for Windows.</p>
-        <p class="tech">C# · WPF · .NET</p>
-      </li>
-      <li>
-        <a href="https://github.com/saboorsarem/modelfit">modelfit</a>
+        <ul class="tags"><li>C#</li><li>WPF</li><li>.NET</li></ul>
+      </article>
+      <article class="card" data-swarm-step="frame">
+        <h3><a href="https://github.com/saboorsarem/modelfit" style="text-decoration:none">modelfit</a></h3>
         <p>Will this model run on your machine? Sizes weights and KV cache, picks a GGUF quant, prints the llama-server command.</p>
-        <p class="tech">Python · llama.cpp</p>
-      </li>
-      <li>
-        <a href="https://github.com/saboorsarem/laptop-bench">laptop-bench</a>
+        <ul class="tags"><li>Python</li><li>llama.cpp</li></ul>
+      </article>
+      <article class="card" data-swarm-step="frame">
+        <h3><a href="https://github.com/saboorsarem/laptop-bench" style="text-decoration:none">laptop-bench</a></h3>
         <p>Benchmark coding models on the hardware you own: pass@1, tok/s, TTFT and RAM on any OpenAI-compatible endpoint.</p>
-        <p class="tech">Python · local LLMs</p>
-      </li>
-    </ul>
+        <ul class="tags"><li>Python</li><li>local LLMs</li></ul>
+      </article>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2><span>02</span>Contact</h2>
-    <ul class="links">
-      <li><a href="https://github.com/saboorsarem">GitHub</a></li>
-      <li><a href="https://x.com/Saboor_Sarem">X / Twitter</a></li>
-      <li><a href="https://t.me/saboorsarem">Telegram</a></li>
-      <li><a href="mailto:saboorsaremdanishyar@gmail.com">Email</a></li>
-    </ul>
+  <section class="wrap" data-swarm>
+    <span class="mono" data-swarm-step="fetch">003 / Privacy &amp; licenses</span>
+    <h2 data-swarm-step="type">Nothing leaves<br>the <em>machine</em>.</h2>
+
+    <div class="split">
+      <div data-swarm-step="frame">
+        <span class="mono">// Local processing</span>
+        <ul>
+          <li><strong>100% offline.</strong> All audio processing and transcription run on your local machine.</li>
+          <li><strong>Total privacy.</strong> Voice data and text are never sent to cloud servers or third-party APIs.</li>
+          <li><strong>Volatile memory.</strong> Audio chunks are processed in RAM and discarded right after typing.</li>
+          <li><strong>One network call.</strong> The only outbound request is the one-time model download.</li>
+        </ul>
+      </div>
+      <div data-swarm-step="frame">
+        <span class="mono">// Third-party models</span>
+        <ul>
+          <li><a href="https://huggingface.co/mehdi-hf/nemotron-asr-streaming-farsi">Nemotron ASR Streaming Farsi</a> &middot; OpenMDW 1.1</li>
+          <li>Shenava-Koochik v1.0 &middot; Apache 2.0</li>
+          <li><a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">NVIDIA Parakeet</a> &middot; CC-BY-4.0</li>
+          <li><a href="https://huggingface.co/ai-sage/GigaAM-v3">GigaAM v3</a> &middot; MIT</li>
+          <li><a href="https://huggingface.co/openai/whisper-base">Whisper base</a> detector &middot; MIT</li>
+          <li><a href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> &middot; offline speech engine</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <footer>&copy; 2026 Saboor Sarem</footer>
-  <div id="stats" hidden></div>
+  <section class="wrap" data-swarm>
+    <span class="mono" data-swarm-step="fetch">004 / Contact</span>
+    <h2 data-swarm-step="type">Say <em>hello</em>.</h2>
+    <div class="links">
+      <a class="btn btn--ghost" href="https://github.com/saboorsarem">GitHub</a>
+      <a class="btn btn--ghost" href="https://x.com/Saboor_Sarem">X / Twitter</a>
+      <a class="btn btn--ghost" href="https://t.me/saboorsarem">Telegram</a>
+      <a class="btn btn--ghost" href="mailto:saboorsaremdanishyar@gmail.com">Email</a>
+    </div>
+  </section>
 </main>
+
+<footer class="wrap">
+  <button class="btn" type="button" id="replay">Watch it again</button>
+  <button class="btn btn--ghost" type="button" id="toggle"></button>
+  <span class="fine">&copy; 2026 Saboor Sarem &middot; AVA &mdash; Your Voice. Your Words. Built &amp; Engineered by DANISHYARSI.
+    Build animation: <a href="https://github.com/harnoorDev/swarm-build">swarm-build</a> by Harnoor Singh (MIT).</span>
+</footer>
+
 <script>
 fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/latest")
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(function (rel) {
-    var el = document.getElementById("ver");
     var ver = rel.tag_name.replace(/^ava-/, "");
-    el.textContent = ver;
+    var el = document.getElementById("ver");
+    el.textContent = "v" + ver;
     el.hidden = false;
     var asset = (rel.assets || []).filter(function (a) { return /Setup\.exe$/i.test(a.name); })[0];
     if (asset) {
@@ -378,27 +391,17 @@ fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases/l
     }
   })
   .catch(function () {});
-
-(function () {
-  if (!new URLSearchParams(location.search).has("stats")) return;
-  var el = document.getElementById("stats");
-  fetch("https://api.github.com/repos/saboorsarem/saboorsarem.github.io/releases?per_page=100")
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (rels) {
-      var total = 0, rows = [];
-      rels.forEach(function (rel) {
-        (rel.assets || []).forEach(function (a) {
-          if (!/^AVA/i.test(a.name)) return;
-          total += a.download_count;
-          rows.push("<span class='row'><span>" + rel.tag_name.replace(/^ava-/, "v") +
-                    " · " + a.name + "</span><span>" + a.download_count + "</span></span>");
-        });
-      });
-      el.innerHTML = "<b>AVA downloads: " + total + "</b>" + rows.join("");
-      el.hidden = false;
-    })
-    .catch(function () { el.hidden = false; el.textContent = "AVA downloads: API error, try later"; });
-})();
 </script>
+
+<script type="module">
+  import { swarmBuild } from './assets/swarm-build.js';
+  const swarm = swarmBuild({ once: 'session' }).start();
+  const toggle = document.getElementById('toggle');
+  const paint = () => { toggle.textContent = swarm.enabled() ? 'Turn build agents off' : 'Turn build agents on'; };
+  paint();
+  toggle.addEventListener('click', () => { swarm.setEnabled(!swarm.enabled()); paint(); });
+  document.getElementById('replay').addEventListener('click', () => swarm.replay());
+</script>
+
 </body>
 </html>

@@ -292,11 +292,12 @@
           Upgrading keeps your models and history, and offers to clean up files left over from older AVA versions.</p>
 
         <h4>Premium &amp; local writing AI</h4>
-        <p><strong>AVA Premium costs $5/month.</strong> Activate an offline, signed license file with no account or
-          cloud service. Premium removes the 1,000-word monthly allowance and unlocks unlimited proofreading, better
-          wording as you type and unlimited AI actions. The optional Qwen3 0.6B INT4 writing model is about
-          536&nbsp;MB and runs inside AVA on the CPU &mdash; no Ollama, external AI app, API key or NVIDIA GPU is
-          required.</p>
+        <p><strong>AVA Premium costs $5/month.</strong> Activate a device-locked online license key, or import a
+          signed <code>.avalic</code> file for offline activation. Online keys refresh automatically and keep working
+          for seven days without a connection. Premium removes the 1,000-word monthly allowance and unlocks unlimited
+          proofreading, better wording as you type and unlimited AI actions. The optional Qwen3 0.6B INT4 writing model
+          is about 536&nbsp;MB and runs inside AVA on the CPU &mdash; no Ollama, external AI app, API key or NVIDIA GPU
+          is required.</p>
         <p>Select text in any app and press <strong>Ctrl+Shift+Space</strong> to preview Rewrite, Proofread, Reply to
           This, Alternatives, TL;DR, Explain, Friendlier, Translate or Shorter. AVA
           preserves your clipboard and replaces the selection only when you click Replace.</p>
@@ -338,20 +339,23 @@
         </table>
         <p>Auto starts from Koochik (Persian), Parakeet 110M (English) and GigaAM (Russian) as soon as you download
           them. Every model is fetched once from Hugging Face, cached locally, and runs offline on the CPU through
-          sherpa-onnx; after that AVA works fully offline.</p>
+          sherpa-onnx. Speech recognition then works fully offline; online Premium licenses retain seven days of
+          offline access.</p>
 
         <h4>Privacy &amp; local processing</h4>
         <ul>
-          <li><strong>100% Offline.</strong> Audio, transcription, voice commands and embedded AI text processing run entirely on your local machine.</li>
-          <li><strong>Total Privacy.</strong> Your voice, dictation and selected AI text are never sent to cloud servers or third-party APIs.</li>
+          <li><strong>Local processing.</strong> Audio, transcription, voice commands and embedded AI text processing run entirely on your local machine.</li>
+          <li><strong>Private content.</strong> Your voice, dictation and selected AI text are never sent to cloud servers or third-party APIs.</li>
           <li><strong>Volatile Memory.</strong> Audio chunks are processed in RAM and discarded immediately after typing.</li>
-          <li><strong>Downloads only.</strong> The only outbound requests are the one-time model downloads from
+          <li><strong>License-only network calls.</strong> AVA contacts its license service only to activate, refresh or
+            deactivate Premium, using a random device identifier and license status &mdash; never audio or AI text.</li>
+          <li><strong>Downloads and updates.</strong> Other outbound requests are the one-time model downloads from
             Hugging Face and the release check against this website.</li>
         </ul>
 
         <h4>Third-party licenses</h4>
-        <p>AVA runs fully offline and incorporates the following open-weights models and libraries. Model weights are
-          downloaded on first use, not bundled, and keep their own licences. Application code is MIT.</p>
+        <p>AVA processes speech and AI locally and incorporates the following open-weights models and libraries. Model
+          weights are downloaded on first use, not bundled, and keep their own licences. Application code is MIT.</p>
         <ul>
           <li><strong>Shenava-Koochik v1.0</strong> (Persian, fast CTC) &mdash; Apache License 2.0
             (<a href="https://apache.org">apache.org</a>)</li>
